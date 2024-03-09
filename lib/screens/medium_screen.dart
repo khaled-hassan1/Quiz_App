@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:quiz_app/medium_screen/lam_medium_screen.dart';
 
 import '../screens/mix_screen.dart';
 import '../model/ads_initial.dart';
 import '../widgets/app_settings.dart';
-import '../screens/lam_screen.dart';
 import '../screens/methlan_screen.dart';
 import '../screens/tafkhem_screen.dart';
 import '../screens/tajwed_screen.dart';

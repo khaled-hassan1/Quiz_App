@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 import '../screens/mix_screen.dart';
 import '../model/ads_initial.dart';
