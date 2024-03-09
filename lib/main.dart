@@ -197,7 +197,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 18,
                 fontFamily: 'Marhey',
                 color: AppSettings.white,
-                fontWeight: AppSettings.bold, //new comment
+                fontWeight: AppSettings.bold, 
               )),
         ),
       ),
