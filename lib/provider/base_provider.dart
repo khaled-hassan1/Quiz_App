@@ -1,14 +1,11 @@
-// ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import '../model/easy_questions.dart';
-import '../model/model.dart';
+import '../model/questions_list.dart';
 
 class QuizProvider with ChangeNotifier {
-  QuizProvider(List<Question> question) {
+  QuizProvider(List<dynamic> question) {
     _questions = question;
   }
 
@@ -18,7 +15,7 @@ class QuizProvider with ChangeNotifier {
   int _restartQuizCount = 0;
   int _allScoreCorrect = 0;
   int _allScoreInCorrect = 0;
-  List<Question> _questions = [];
+  List _questions = [];
 
   String get dateTime {
     initializeDateFormatting('ar_AR', null);
@@ -38,7 +35,7 @@ class QuizProvider with ChangeNotifier {
 
   int get restartQuizCount => _restartQuizCount;
 
-  List<Question> get questions => _questions;
+  List get questions => _questions;
 
   bool get isQuizFinished => _currentQuestionIndex == _questions.length;
 
@@ -64,10 +61,10 @@ class QuizProvider with ChangeNotifier {
       throw ('Invalid answer index: $selectedAnswerIndex');
     } else if (selectedAnswerIndex ==
         _questions[currentQuestionIndex].correctAnswerIndex) {
-      if (questions == mixAllEasy) {
+      if (questions == qMixAll) {
         _scoreCorrect = 0;
         _scoreIncorrect = 0;
-      } else if (questions != mixAllEasy) {
+      } else if (questions != qMixAll) {
         _allScoreCorrect = 0;
         _allScoreInCorrect = 0;
       }

@@ -4,7 +4,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class AppSettings {
-  static final bool platform = Platform.isIOS;
+
+  static final bool platformIos = Platform.isIOS;
   static bool isCertificateSoundCalled = false;
   static final player = AudioPlayer();
   static const TextAlign center = TextAlign.center;
@@ -23,7 +24,8 @@ class AppSettings {
       edgeInsetsAll(6),
     ),
     textStyle: const MaterialStatePropertyAll(
-      TextStyle(fontSize: 25, fontFamily: 'Marhey'),
+      TextStyle(
+          fontSize: 23, fontFamily: 'Marhey', fontWeight: FontWeight.w100),
     ),
   );
 
@@ -35,7 +37,7 @@ class AppSettings {
   static const textStyleRowNumOfQuestionColor = TextStyle(
     color: Colors.white,
   );
-  static double heightImagePosition = 50;
+  static const double heightImagePosition = 50;
   static const Color red = Colors.red;
   static const Color white = Colors.white;
   static final buttonStyleCertificate =

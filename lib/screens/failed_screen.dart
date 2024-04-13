@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-import '../model/ads_initial.dart';
+import '../ads/ads_initial.dart';
 import '../widgets/app_settings.dart';
 import '../widgets/banner_ads.dart';
 
@@ -14,9 +14,11 @@ class FailedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppSettings.futureDelay(
-      () => Ads().loadAd(),
       () => failedSound(),
-      () => Ads().loadAd2(),
+      // () => Ads().loadAd(),
+      // () => Ads().loadAd2(),
+      () => null,
+      () => null,
       () => null,
     );
 

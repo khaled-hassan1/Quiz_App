@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import '../widgets/app_settings.dart';
 
@@ -13,9 +14,29 @@ class RowNumOfQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = provider.questions[provider.currentQuestionIndex];
+    final isQmakharej = provider.questions == qmakharej;
+    final isQsifat = provider.questions == qsifat;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
+        if ((isQmakharej) &&
+            (currentQuestion.imagePath != '') &&
+            (currentQuestion.soundPath == ''))
+          ImageWidget(provider: provider),
+        if ((isQmakharej) &&
+            (currentQuestion.soundPath != '') &&
+            (currentQuestion.imagePath == ''))
+          const HearingWidget(),
+        if ((isQsifat) &&
+            (currentQuestion.imagePath != '') &&
+            (currentQuestion.soundPath == ''))
+          const HearingWidget(),
+        if ((isQsifat) &&
+            (currentQuestion.soundPath != '') &&
+            (currentQuestion.imagePath == ''))
+          ImageWidget(provider: provider),
         Container(
           decoration: BoxDecoration(
             borderRadius: AppSettings.borderRadiusCircle(20),
@@ -43,5 +64,49 @@ class RowNumOfQuestion extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class HearingWidget extends StatelessWidget {
+  const HearingWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        padding: const EdgeInsets.all(15),
+        style: ButtonStyle(
+            overlayColor: MaterialStatePropertyAll(Colors.blue.shade200),
+            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20))),
+            backgroundColor: const MaterialStatePropertyAll(Colors.white)),
+        onPressed: () => AppSettings.click(),
+        icon: const Icon(
+          Icons.hearing,
+          color: Colors.blue,
+          size: 50,
+        ));
+  }
+}
+
+class ImageWidget extends StatelessWidget {
+  const ImageWidget({
+    super.key,
+    required this.provider,
+  });
+
+  final QuizProvider provider;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 200,
+        width: 200,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child:
+              Image.asset(qmakharej[provider.currentQuestionIndex].imagePath),
+        ));
   }
 }

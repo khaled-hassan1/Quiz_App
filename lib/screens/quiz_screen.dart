@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+import '../model/question_model.dart';
 import '../widgets/app_settings.dart';
 import '../screens/failed_screen.dart';
 import '../screens/certificate_screen.dart';
-import '../model/model.dart';
 import '../provider/base_provider.dart';
 import '../widgets/answer_option.dart';
 import '../widgets/banner_ads.dart';
@@ -43,7 +43,7 @@ class QuizScreen extends StatelessWidget {
           showConfirmationSnackBar(context, provider);
           return false;
         },
-        child: !AppSettings.platform
+        child: !AppSettings.platformIos
             ? Scaffold(
                 body: GradientContainer(
                   child: Stack(
@@ -85,13 +85,13 @@ class QuizScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      if (AppSettings.platform)
+                      if (AppSettings.platformIos)
                         CupertinoButton.filled(
                             child: const Text('رجوع'),
                             onPressed: () {
                               Navigator.pop(context);
                             }),
-                      const BannerAds(),
+                      // const BannerAds(),
                     ],
                   ),
                 ),

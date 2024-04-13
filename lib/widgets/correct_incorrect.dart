@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 
-import '../model/easy_questions.dart';
+import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import '../widgets/app_settings.dart';
 
@@ -22,19 +22,19 @@ class RowCorrectAndInCorrect extends StatelessWidget {
         children: [
           scoreDisplay(
             title: 'صحيح',
-            provider: provider.questions == mixAllEasy
+            provider: provider.questions == qMixAll
                 ? provider.allScoreCorrect
                 : provider.scoreCorrect,
-            color: provider.questions == mixAllEasy
+            color: provider.questions == qMixAll
                 ? getScoreCorrectColorAll(provider.allScoreCorrect)
                 : getScoreCorrectColor(provider.scoreCorrect),
           ),
           scoreDisplay(
             title: 'خطأ',
-            provider: provider.questions == mixAllEasy
+            provider: provider.questions == qMixAll
                 ? provider.allScoreInCorrect
                 : provider.scoreIncorrect,
-            color: provider.questions == mixAllEasy
+            color: provider.questions == qMixAll
                 ? getIncorrectScoreColorAll(provider.allScoreInCorrect)
                 : getIncorrectScoreColor(provider.scoreIncorrect),
           ),

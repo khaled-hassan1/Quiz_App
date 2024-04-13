@@ -1,12 +1,12 @@
-import '../model/model.dart';
-import '../model/easy_questions.dart';
+import '../model/question_without_image.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class NoonProvider extends QuizProvider {
-  NoonProvider() : super(qNoonEasy);
+  NoonProvider() : super(qNoon);
 
   @override
-  List<Question> questions = qNoonEasy;
+  List<QuestionWithoutMedia> questions = qNoon;
 
   @override
   String get page => 'النون الساكنة والتنوين';

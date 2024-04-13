@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../model/ad_manager.dart';
+import 'ad_manager.dart';
 
 class Ads {
   InterstitialAd? _interstitialAd;

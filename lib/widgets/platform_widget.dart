@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/widgets/app_settings.dart';
+import '../widgets/app_settings.dart';
 
 class PlatformWidget extends StatelessWidget {
   final WidgetBuilder androidBuilder;
@@ -9,7 +9,7 @@ class PlatformWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!AppSettings.platform) {
+    if (!AppSettings.platformIos) {
       return androidBuilder(context);
     } else {
       return iosBuilder(context);

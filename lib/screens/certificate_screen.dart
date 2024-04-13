@@ -9,7 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:store_redirect/store_redirect.dart';
 
 import '../provider/base_provider.dart';
-import '../model/ads_initial.dart';
+import '../ads/ads_initial.dart';
 import '../widgets/app_settings.dart';
 import '../widgets/banner_ads.dart';
 import '../widgets/certificate.dart';
@@ -32,8 +32,10 @@ class CertificateScreen extends StatelessWidget {
     // }
     AppSettings.futureDelay(
       () => certificateSound(),
-      () => Ads().loadAd2(),
-      () => Ads().loadAd(),
+      // () => Ads().loadAd2(),
+      // () => Ads().loadAd(),
+      () => null,
+      () => null,
       () => null,
     );
     ScreenshotController screenshotController = ScreenshotController();

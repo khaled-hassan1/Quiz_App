@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/easy_questions.dart';
+import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import '../widgets/app_settings.dart';
 
@@ -19,7 +19,7 @@ class ContainerHeader extends StatelessWidget {
         alignment: Alignment.topCenter,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         child: Text(
-          provider.questions == mixAllEasy
+          provider.questions == qMixAll
               ? 'انتهت الأسئلة'
               : '\nانتهت الأسئلة ($namePage)',
           textDirection: AppSettings.rtl,

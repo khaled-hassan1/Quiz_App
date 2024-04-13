@@ -1,12 +1,12 @@
-import '../model/easy_questions.dart';
+import '../model/question_without_image.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
-import '../model/model.dart';
 
 class MeemProvider extends QuizProvider {
-  MeemProvider() : super(qMeemEasy);
+  MeemProvider() : super(qMeem);
 
   @override
-  List<Question> questions = qMeemEasy;
+  List<QuestionWithoutMedia> questions = qMeem;
 
   @override
   String get page => 'الميم الساكنة';

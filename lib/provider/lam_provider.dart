@@ -1,12 +1,12 @@
-import '../model/model.dart';
-import '../model/easy_questions.dart';
+import '../model/question_without_image.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class LamProvider extends QuizProvider {
-  LamProvider() : super(qlamEasy);
+  LamProvider() : super(qlam);
 
   @override
-  List<Question> questions = qlamEasy;  // can i check here or not
+  List<QuestionWithoutMedia> questions = qlam;
 
   @override
   String get page => 'اللامات';
