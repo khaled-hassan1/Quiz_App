@@ -100,13 +100,13 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 200,
-        width: 200,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(50),
+      child: SizedBox(
+          height: 200,
+          width: 200,
           child:
-              Image.asset(qmakharej[provider.currentQuestionIndex].imagePath),
-        ));
+              Image.asset(qmakharej[provider.currentQuestionIndex].imagePath,)),
+    );
   }
 }

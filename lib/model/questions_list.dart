@@ -391,34 +391,84 @@ final List<QuestionWithoutMedia> qTafkhemEasy = [
 
 final List<QuestionWithImageOrSound> qmakharej = [
   QuestionWithImageOrSound(
-      question: 'الحروف المفخمة دائما...',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
-      correctAnswerIndex: 0,
-      imagePath: 'assets/image/edit-4.png',
+      question: 'من باطن الشفة السفلى وأطراف الثنايا العليا مخرج حرف ...',
+      options: ['الثاء', 'الواو المدية', 'الفاء', 'الميم'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/fa.png',
       soundPath: ''),
   QuestionWithImageOrSound(
-      question: 'الحروف المفخمة دائما...',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
-      correctAnswerIndex: 0,
-      imagePath: 'assets/image/edit-4.png',
+      question:
+          'مما بين طرف اللسان وأطراف الثنايا العليا خارجا طرفه قليلا مخرج ...',
+      options: ['الميم والباء', 'السين والصاد والزاي', 'الظاء والذال والثاء'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/thal.png',
       soundPath: ''),
   QuestionWithImageOrSound(
-      question: '.11111',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
-      correctAnswerIndex: 0,
-      imagePath: '',
-      soundPath: 'assets/sounds/click-button.mp3'),
+      question: 'من طرف اللسان بينه وبين ما فويق الثنايا العليا يخرج حرف ...',
+      options: ['الرا', 'اللام', 'النون'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/noon.png',
+      soundPath: ''),
   QuestionWithImageOrSound(
-      question: 'الما.11111..',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
+      question:
+          'من أدنى حافني اللسان معا إلى منتهى طرف اللسان وما يحاذيهما من الحنك الأعلى مما فويق الضاحكين والنابين والرباعيتين والثنيتين',
+      options: ['النون', 'الرا', 'اللام'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/lam.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'من مخرج النون من طرف اللسان بينه وبين ما فويق الثنايا العليا غير أنها أدخل في ظهر اللسان قليلا',
+      options: ['الرا', 'اللام', 'النون'],
       correctAnswerIndex: 0,
-      imagePath: '',
+      imagePath: 'assets/image/ra.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'مما بين طرف اللسان وأصول الثنايا العليا',
+      options: ['الطاء والدال والتاء', 'الدال', 'الطاء', 'السين'],
+      correctAnswerIndex: 0,
+      imagePath: 'assets/image/noon.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'تخرج من الفرجة التي بين طرف اللسان والثنايا العليا ...',
+      options: ['التاء', 'السين', 'السين والصاد والزاي'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/sen.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'مما بين جذر اللسان والحنك اللحمي واللهاة',
+      options: [
+        'الجيم والشين والياء غبر المدية',
+        'القاف والكاف',
+        'الغين والخاء'
+      ],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/kha.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'من أقصى اللسان وما يليه من الحنك الأعلى وهو أسفل من مخرج القاف قليلا',
+      options: ['الخاء', 'الضاد', 'الكاف'],
+      correctAnswerIndex: 2,
+      imagePath: 'assets/image/kaf.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'من أقصى اللسان وما فوقه من الحنك الأعلى',
+      options: ['الخاء', 'القاف', 'الكاف'],
+      correctAnswerIndex: 1,
+      imagePath: 'assets/image/kaaf.png',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'من بين أول حافة اللسان وما يليها من الأضراس',
+      options: ['الخاء', 'الضاد', 'اللام'],
+      correctAnswerIndex: 1,
+      imagePath: 'assets/image/dAd.png',
       soundPath: ''),
 ]..shuffle();
 
 final List<QuestionWithImageOrSound> qsifat = [
   QuestionWithImageOrSound(
-      question: 'الما.11111..',
+      question: '',
       options: ['7 أحرف', '5 أحرف', 'حرف'],
       correctAnswerIndex: 0,
       imagePath: 'assets/image/edit-4.png',

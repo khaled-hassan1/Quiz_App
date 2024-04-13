@@ -37,117 +37,122 @@ class QuizScreen extends StatelessWidget {
         (provider.currentQuestionIndex) / provider.questions.length;
 
     return SafeArea(
-      // ignore: deprecated_member_use
-      child: WillPopScope(
-        onWillPop: () async {
-          showConfirmationSnackBar(context, provider);
-          return false;
-        },
-        child: !AppSettings.platformIos
-            ? Scaffold(
-                body: GradientContainer(
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              LinearProgressIndicator(
-                                value: progress,
-                                minHeight: 9.0,
-                                borderRadius:
-                                    AppSettings.borderRadiusCircle(20),
-                                backgroundColor: AppSettings.white,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.greenAccent.shade400,
+      child: InteractiveViewer(
+        boundaryMargin: AppSettings.edgeInsetsAll(50),
+        // ignore: deprecated_member_use
+        child: WillPopScope(
+          onWillPop: () async {
+            showConfirmationSnackBar(context, provider);
+            return false;
+          },
+          child: !AppSettings.platformIos
+              ? Scaffold(
+                  body: GradientContainer(
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                LinearProgressIndicator(
+                                  value: progress,
+                                  minHeight: 9.0,
+                                  borderRadius:
+                                      AppSettings.borderRadiusCircle(20),
+                                  backgroundColor: AppSettings.white,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.greenAccent.shade400,
+                                  ),
                                 ),
-                              ),
-                              AppSettings.sizedBox(10),
-                              Container(
-                                alignment: Alignment.center,
-                                margin: AppSettings.edgeInsetsAll(10),
-                                padding: AppSettings.edgeInsetsAll(4),
-                                child: Text(
-                                  provider.page,
-                                  textDirection: AppSettings.rtl,
-                                  textAlign: AppSettings.center,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
+                                AppSettings.sizedBox(10),
+                                Container(
+                                  alignment: Alignment.center,
+                                  margin: AppSettings.edgeInsetsAll(10),
+                                  padding: AppSettings.edgeInsetsAll(4),
+                                  child: Text(
+                                    provider.page,
+                                    textDirection: AppSettings.rtl,
+                                    textAlign: AppSettings.center,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
                                 ),
-                              ),
-                              AppSettings.sizedBox(10),
-                              RowNumOfQuestion(provider: provider),
-                              QuestionText(provider: provider),
-                              ...buildAnswerOptions(provider, currentQuestion),
-                              RowCorrectAndInCorrect(provider: provider),
-                            ],
+                                AppSettings.sizedBox(10),
+                                RowNumOfQuestion(provider: provider),
+                                QuestionText(provider: provider),
+                                ...buildAnswerOptions(
+                                    provider, currentQuestion),
+                                RowCorrectAndInCorrect(provider: provider),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      if (AppSettings.platformIos)
-                        CupertinoButton.filled(
-                            child: const Text('رجوع'),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            }),
-                      // const BannerAds(),
-                    ],
+                        if (AppSettings.platformIos)
+                          CupertinoButton.filled(
+                              child: const Text('رجوع'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }),
+                        // const BannerAds(),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            : CupertinoPageScaffold(
-                child: GradientContainer(
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              LinearProgressIndicator(
-                                value: progress,
-                                minHeight: 9.0,
-                                borderRadius:
-                                    AppSettings.borderRadiusCircle(20),
-                                backgroundColor: AppSettings.white,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.greenAccent.shade400,
+                )
+              : CupertinoPageScaffold(
+                  child: GradientContainer(
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                LinearProgressIndicator(
+                                  value: progress,
+                                  minHeight: 9.0,
+                                  borderRadius:
+                                      AppSettings.borderRadiusCircle(20),
+                                  backgroundColor: AppSettings.white,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.greenAccent.shade400,
+                                  ),
                                 ),
-                              ),
-                              AppSettings.sizedBox(10),
-                              Container(
-                                alignment: Alignment.center,
-                                margin: AppSettings.edgeInsetsAll(10),
-                                padding: AppSettings.edgeInsetsAll(4),
-                                child: Text(
-                                  provider.page,
-                                  textDirection: AppSettings.rtl,
-                                  textAlign: AppSettings.center,
-                                  style: CupertinoTheme.of(context)
-                                      .textTheme
-                                      .navLargeTitleTextStyle,
+                                AppSettings.sizedBox(10),
+                                Container(
+                                  alignment: Alignment.center,
+                                  margin: AppSettings.edgeInsetsAll(10),
+                                  padding: AppSettings.edgeInsetsAll(4),
+                                  child: Text(
+                                    provider.page,
+                                    textDirection: AppSettings.rtl,
+                                    textAlign: AppSettings.center,
+                                    style: CupertinoTheme.of(context)
+                                        .textTheme
+                                        .navLargeTitleTextStyle,
+                                  ),
                                 ),
-                              ),
-                              AppSettings.sizedBox(10),
-                              RowNumOfQuestion(provider: provider),
-                              QuestionText(provider: provider),
-                              ...buildAnswerOptions(provider, currentQuestion),
-                              RowCorrectAndInCorrect(provider: provider),
-                            ],
+                                AppSettings.sizedBox(10),
+                                RowNumOfQuestion(provider: provider),
+                                QuestionText(provider: provider),
+                                ...buildAnswerOptions(
+                                    provider, currentQuestion),
+                                RowCorrectAndInCorrect(provider: provider),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                          bottom: 2.0,
-                          right: 110.0,
-                          child: CupertinoButton.filled(
-                              child: const Text('رجوع'), onPressed: () {})),
-                      const BannerAds(),
-                    ],
+                        Positioned(
+                            bottom: 2.0,
+                            right: 110.0,
+                            child: CupertinoButton.filled(
+                                child: const Text('رجوع'), onPressed: () {})),
+                        const BannerAds(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+        ),
       ),
     );
   }
