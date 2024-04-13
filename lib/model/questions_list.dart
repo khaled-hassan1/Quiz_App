@@ -389,7 +389,7 @@ final List<QuestionWithoutMedia> qTafkhemEasy = [
       correctAnswerIndex: 1),
 ]..shuffle();
 
-final List<QuestionWithImageOrSound> qmakharej = [
+final List<QuestionWithImageOrSound> qMakharej = [
   QuestionWithImageOrSound(
       question: 'من باطن الشفة السفلى وأطراف الثنايا العليا مخرج حرف ...',
       options: ['الثاء', 'الواو المدية', 'الفاء', 'الميم'],
@@ -466,19 +466,83 @@ final List<QuestionWithImageOrSound> qmakharej = [
       soundPath: ''),
 ]..shuffle();
 
-final List<QuestionWithImageOrSound> qsifat = [
+final List<QuestionWithImageOrSound> qSifat = [
   QuestionWithImageOrSound(
-      question: '',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
-      correctAnswerIndex: 0,
-      imagePath: 'assets/image/edit-4.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: '.11111',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
+      question:
+          'الصوت الذي يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
+      options: ['الجهر', 'الهمس', 'الرخاوة'],
       correctAnswerIndex: 0,
       imagePath: '',
       soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'الصوت الذي لا يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
+      options: ['الجهر', 'الهمس', 'الرخاوة'],
+      correctAnswerIndex: 1,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'الصوت الذي ينتج بحبس النفس في المخرج ثم اطلاقه تعريف صفة ...',
+      options: ['الشدة', 'البينية', 'الهمس'],
+      correctAnswerIndex: 0,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'الصوت الذي يضيق مجرى النفس في مخرجه تعريف صفة ...',
+      options: ['الشدة', 'البينية', 'الرخاوة'],
+      correctAnswerIndex: 2,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'صفة ليس لها ضد وألحقت بالصفات التي لها ضد لارتباطها بالشدة والرخاوة وتعريفها عدم كمال انحباس النفس وعدم كمال جريانه',
+      options: ['الشدة', 'البينية', 'الجر'],
+      correctAnswerIndex: 1,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط مع رجوع لسان المزمار للخلف واتجاه الصوت لأعلى تعريف صفة ...',
+      options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
+      correctAnswerIndex: 2,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'عدم ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط وعدم رجوع لسان المزمار للخلف واتجاه الصوت لأسفل تعريف صفة ...',
+      options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
+      correctAnswerIndex: 1,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'سمن يدخل على جسم الحرف فيمتلئ الفم بصداه تعريف صفة ...',
+      options: ['الإطباق', 'الاستفال', 'التفخيم'],
+      correctAnswerIndex: 2,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question: 'نحول يدخل على جسم الحرف فلا يمتلئ الفم بصداه تعريف صفة ...',
+      options: ['الانفتاح', 'الترقيق', 'الاستعلاء'],
+      correctAnswerIndex: 1,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'عدم وجود ارتفاعين في اللسان بينهما منخفض وعدم انحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
+      options: ['الانفتاح', 'الترقيق', 'الإطباق'],
+      correctAnswerIndex: 0,
+      imagePath: '',
+      soundPath: ''),
+  QuestionWithImageOrSound(
+      question:
+          'وجود ارتفاعين في اللسان بينهما منخفض وانحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
+      options: ['الانفتاح', 'الترقيق', 'الإطباق'],
+      correctAnswerIndex: 2,
+      imagePath: '',
+      soundPath: ''),
+]..shuffle();
+
+final List<QuestionWithImageOrSound> qSounds = [
   QuestionWithImageOrSound(
       question: '..',
       options: ['7 أحرف', '5 أحرف', 'حرف'],

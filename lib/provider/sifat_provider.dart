@@ -3,10 +3,10 @@ import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class SifatProvider extends QuizProvider {
-  SifatProvider() : super(qsifat);
+  SifatProvider() : super(qSifat);
 
   @override
-  List<QuestionWithImageOrSound> questions = qsifat;
+  List<QuestionWithImageOrSound> questions = qSifat;
 
   @override
   String get page => 'صفات الحروف';

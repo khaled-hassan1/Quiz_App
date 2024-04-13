@@ -10,6 +10,7 @@ class NamesProvider with ChangeNotifier {
 
   String _textMakharej = '🎉    مخارج الحروف';
   String _textSifat = '🎉    صفات الحروف';
+  String _textSounds = '🎉     الصوتيات';
 
   // // AssetImage defaultImage = const AssetImage('assets/image/signature.png');
   String get defaultTeacher => _defaultTeacher;
@@ -17,8 +18,9 @@ class NamesProvider with ChangeNotifier {
   String get textMakharej => _textMakharej;
 
   String get textSifat => _textSifat;
+  String get textSounds => _textSounds;
 
-  Future<void> loadNameFromSharedPrefsM() async {
+  Future<void> loadNameFromSharedPrefsMakharej() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final savedName = prefs.getString('nameM');
     if (savedName != null) {
@@ -27,18 +29,18 @@ class NamesProvider with ChangeNotifier {
     }
   }
 
-  Future<void> saveNameToSharedPrefsM() async {
+  Future<void> saveNameToSharedPrefsMakharej() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('nameM', _textMakharej);
   }
 
-  void updateNameM() {
+  void updateNameMakharej() {
     _textMakharej = 'مخارج الحروف';
-    saveNameToSharedPrefsM();
+    saveNameToSharedPrefsMakharej();
     notifyListeners();
   }
 
-  Future<void> loadNameFromSharedPrefsS() async {
+  Future<void> loadNameFromSharedPrefsSifat() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final savedName = prefs.getString('nameS');
     if (savedName != null) {
@@ -52,9 +54,29 @@ class NamesProvider with ChangeNotifier {
     prefs.setString('nameS', _textSifat);
   }
 
-  void updateNameS() {
+  void updateNameSifat() {
     _textSifat = 'صفات الحروف';
     saveNameToSharedPrefsS();
+    notifyListeners();
+  }
+
+  Future<void> loadNameFromSharedPrefsSounds() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final savedName = prefs.getString('nameSounds');
+    if (savedName != null) {
+      _textSounds = savedName;
+      notifyListeners();
+    }
+  }
+
+  Future<void> saveNameToSharedPrefsSounds() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('nameSounds', _textSounds);
+  }
+
+  void updateNameSounds() {
+    _textSounds = 'الصوتيات';
+    saveNameToSharedPrefsSounds();
     notifyListeners();
   }
 

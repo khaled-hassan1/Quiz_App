@@ -15,10 +15,13 @@ class GradientContainer extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
+        // color: Color.fromRGBO(149, 136, 235, 1),
         gradient: !AppSettings.platformIos
             ? const LinearGradient(colors: [
-                Colors.white10,
-                Color.fromARGB(255, 1, 11, 29),
+                Color.fromRGBO(98, 90, 151, 1),
+                Color.fromRGBO(12, 3, 70, 1),
+                // Colors.white10,
+                // Color.fromARGB(255, 1, 11, 29),
               ], begin: Alignment.topLeft, end: Alignment.bottomRight)
             : const LinearGradient(colors: [
                 Color.fromARGB(255, 88, 85, 85),

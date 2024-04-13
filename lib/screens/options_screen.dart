@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_app/screens/sounds_screen.dart';
 import '../screens/methlan_screen.dart';
 import '../screens/mix_screen.dart';
 import '../screens/noon_screen.dart';
@@ -36,9 +37,11 @@ class _OptionsScreenState extends State<OptionsScreen> {
   void initState() {
     super.initState();
     Provider.of<NamesProvider>(context, listen: false)
-        .loadNameFromSharedPrefsM();
+        .loadNameFromSharedPrefsMakharej();
     Provider.of<NamesProvider>(context, listen: false)
-        .loadNameFromSharedPrefsS();
+        .loadNameFromSharedPrefsSifat();
+    // Provider.of<NamesProvider>(context, listen: false)
+    //     .loadNameFromSharedPrefsSounds();
   }
 
   @override
@@ -90,9 +93,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonMAndS(
                     fun: () {
-                      p.updateNameM();
+                      p.updateNameMakharej();
                       AppSettings.click();
-                      ();
                       Navigator.pushNamed(
                         context,
                         MakharejScreen.route,
@@ -106,7 +108,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonMAndS(
                     fun: () {
-                      p.updateNameS();
+                      p.updateNameSifat();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
@@ -115,6 +117,22 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) => Text(value.textSifat),
+                    ),
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  TextButton(
+                    onPressed: null,
+                    //  () {
+                    //   p.updateNameSounds();
+                    //   AppSettings.click();
+                    //   Navigator.pushNamed(
+                    //     context,
+                    //     SoundsScreen.route,
+                    //   );
+                    // },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) =>
+                          const Text('الصوتيات ... قريبٌا'),
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,

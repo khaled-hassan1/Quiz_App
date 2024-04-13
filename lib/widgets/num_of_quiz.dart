@@ -15,8 +15,8 @@ class RowNumOfQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentQuestion = provider.questions[provider.currentQuestionIndex];
-    final isQmakharej = provider.questions == qmakharej;
-    final isQsifat = provider.questions == qsifat;
+    final isQmakharej = provider.questions == qMakharej;
+    final isQsifat = provider.questions == qSifat;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -105,8 +105,9 @@ class ImageWidget extends StatelessWidget {
       child: SizedBox(
           height: 200,
           width: 200,
-          child:
-              Image.asset(qmakharej[provider.currentQuestionIndex].imagePath,)),
+          child: Image.asset(
+            qMakharej[provider.currentQuestionIndex].imagePath,
+          )),
     );
   }
 }
