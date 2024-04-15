@@ -56,8 +56,8 @@
 //     notifyListeners();
 //   }
 // }
-import '../model/model.dart';
-import '../model/easy_questions.dart';
+import '../model/question_model.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class MododProvider extends QuizProvider {

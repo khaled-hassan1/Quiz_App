@@ -1,19 +1,47 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../screens/difficult_screen.dart';
-import '../model/ads_initial.dart';
-import '../provider/name_provider.dart';
-import '../screens/easy_test_screen.dart';
+import 'package:quiz_app/screens/sounds_screen.dart';
+import '../screens/methlan_screen.dart';
+import '../screens/mix_screen.dart';
+import '../screens/noon_screen.dart';
+import '../screens/sifat_screen.dart';
+import '../widgets/banner_ads.dart';
+import '../ads/ads_initial.dart';
+import '../provider/names_provider.dart';
+import '../widgets/button_m_and_s.dart';
+import '../widgets/gradient_container.dart';
+import './lam_screen.dart';
+import './makharej_screen.dart';
+import './meem_screen.dart';
+import './modod_screen.dart';
+import './tafkhem_screen.dart';
+import './tajwed_screen.dart';
 import '../widgets/app_settings.dart';
 import '../widgets/navigate_button.dart';
-import './medium_screen.dart';
 
-class OptionsScreen extends StatelessWidget {
+class OptionsScreen extends StatefulWidget {
   static const String route = '/options-screen';
 
   const OptionsScreen({super.key});
+
+  @override
+  State<OptionsScreen> createState() => _OptionsScreenState();
+}
+
+class _OptionsScreenState extends State<OptionsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsMakharej();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsSifat();
+    // Provider.of<NamesProvider>(context, listen: false)
+    //     .loadNameFromSharedPrefsSounds();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,57 +52,186 @@ class OptionsScreen extends StatelessWidget {
         () => Ads().loadAd2(),
         () => showTeacherDialog(context),
         () => showNameDialog(context),
+        // () => null,
+        // () => null,
+        // () => null,
+        // () => null,
       );
     }
+    final p = Provider.of<NamesProvider>(context, listen: false);
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          toolbarHeight: 80,
-          title: Text(
-            'أسئلة على التجويد (حفص عن عاصم)',
-            style: !AppSettings.platform
-                ? Theme.of(context).textTheme.titleMedium
-                : CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+      child: Stack(
+        children: [
+          GradientContainer(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    alignment: Alignment.topCenter,
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    child: Text(
+                      'أسئلة على التجويد (حفص عن عاصم)',
+                      style: !AppSettings.platformIos
+                          ? Theme.of(context).textTheme.titleMedium
+                          : CupertinoTheme.of(context)
+                              .textTheme
+                              .navLargeTitleTextStyle,
+                    ),
+                  ),
+                  if (!AppSettings.platformIos) AppSettings.sizedBox(30),
+                  NavigateButton(
+                      fun: () {
+                        AppSettings.click();
+                        ();
+                        Navigator.pushNamed(context, TajweedScreen.route);
+                      },
+                      page: 'مبادئ علم التجويد'),
+                  AppSettings.sizesBoxOptionsScreen,
+                  ButtonMAndS(
+                    fun: () {
+                      p.updateNameMakharej();
+                      AppSettings.click();
+                      Navigator.pushNamed(
+                        context,
+                        MakharejScreen.route,
+                      );
+                    },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) =>
+                          Text(value.textMakharej),
+                    ),
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  ButtonMAndS(
+                    fun: () {
+                      p.updateNameSifat();
+                      AppSettings.click();
+                      Navigator.pushNamed(
+                        context,
+                        SifatScreen.route,
+                      );
+                    },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) => Text(value.textSifat),
+                    ),
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  TextButton(
+                    onPressed: null,
+                    //  () {
+                    //   p.updateNameSounds();
+                    //   AppSettings.click();
+                    //   Navigator.pushNamed(
+                    //     context,
+                    //     SoundsScreen.route,
+                    //   );
+                    // },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) =>
+                          const Text('الصوتيات ... قريبٌا'),
+                    ),
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                    page: 'النون الساكنة والتنوين',
+                    fun: () {
+                      AppSettings.click();
+                      Navigator.pushNamed(
+                        context,
+                        NoonScreen.route,
+                      );
+                    },
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                    fun: () {
+                      AppSettings.click();
+                      ();
+                      Navigator.pushNamed(
+                        context,
+                        MeemScreen.route,
+                      );
+                    },
+                    page: 'الميم الساكنة',
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                      fun: () {
+                        AppSettings.click();
+                        ();
+                        Navigator.pushNamed(
+                          context,
+                          MododScreen.route,
+                        );
+                      },
+                      page: 'المدود'),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                      fun: () {
+                        AppSettings.click();
+                        ();
+                        Navigator.pushNamed(
+                          context,
+                          LamScreen.route,
+                        );
+                      },
+                      page: 'اللامات'),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                      fun: () {
+                        AppSettings.click();
+                        ();
+                        Navigator.pushNamed(
+                          context,
+                          MehtlanScreen.route,
+                        );
+                      },
+                      page: 'المتماثلان والمتقاربان والمتجانسان'),
+                  AppSettings.sizesBoxOptionsScreen,
+                  NavigateButton(
+                      fun: () {
+                        AppSettings.click();
+                        ();
+                        Navigator.pushNamed(
+                          context,
+                          TafkhemScreen.route,
+                        );
+                      },
+                      page: 'الترقيق والتفخيم'),
+                  AppSettings.sizedBox(40),
+                  FilledButton(
+                    onPressed: () {
+                      AppSettings.click();
+                      Navigator.pushNamed(
+                        context,
+                        MixScreen.route,
+                      );
+                    },
+                    style: AppSettings.buttonStyle,
+                    child: const Text(
+                      'اختبار على كل الأبواب',
+                    ),
+                  ),
+                  AppSettings.sizesBoxOptionsScreen,
+                ],
+              ),
+            ),
           ),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              NavigateButtonOptionsScreen(
-                  fun: () {
-                    AppSettings.click();
-                    Navigator.pushNamed(context, EasyTestScreen.route);
-                  },
-                  page: AppSettings.easy),
-              AppSettings.sizedBox(30),
-              NavigateButtonOptionsScreen(
-                  fun: () {
-                    AppSettings.click();
-                    Navigator.pushNamed(context, MediumTestScreen.route);
-                  },
-                  page: AppSettings.medium),
-              AppSettings.sizedBox(30),
-              NavigateButtonOptionsScreen(
-                  fun: () {
-                    AppSettings.click();
-                    Navigator.pushNamed(context, DifficultTestScreen.route);
-                  },
-                  page: AppSettings.difficult),
-            ],
-          ),
-        ),
+          // const BannerAds(),
+        ],
       ),
     );
   }
 
   Future<void> showNameDialog(BuildContext context) async {
     TextEditingController controller = TextEditingController();
-    final provider = Provider.of<NameProvider>(context, listen: false);
+    final provider = Provider.of<NamesProvider>(context, listen: false);
     TextDirection rtl = TextDirection.rtl;
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    if (!AppSettings.platform) {
+    if (!AppSettings.platformIos) {
       return showDialog(
         context: context,
         builder: (context) {
@@ -231,9 +388,9 @@ class OptionsScreen extends StatelessWidget {
 
   Future<void> showTeacherDialog(BuildContext context) async {
     TextEditingController controller = TextEditingController();
-    final provider = Provider.of<NameProvider>(context, listen: false);
+    final provider = Provider.of<NamesProvider>(context, listen: false);
     TextDirection rtl = TextDirection.rtl;
-    if (!AppSettings.platform) {
+    if (!AppSettings.platformIos) {
       return showDialog(
         context: context,
         builder: (context) {

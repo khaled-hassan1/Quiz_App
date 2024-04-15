@@ -8,7 +8,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart' as path;
 
 import '../widgets/app_settings.dart';
-import '../provider/name_provider.dart';
+import '../provider/names_provider.dart';
+import '../widgets/banner_ads.dart';
 
 class ResultScreen extends StatelessWidget {
   static String route = '/certificate-screen';
@@ -24,7 +25,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nameProvider = Provider.of<NameProvider>(context);
+    final nameProvider = Provider.of<NamesProvider>(context);
     ScreenshotController screenshotController = ScreenshotController();
     return Screenshot(
       controller: screenshotController,
@@ -101,12 +102,14 @@ class ResultScreen extends StatelessWidget {
                     Positioned(
                       top: 20,
                       right: 10,
-                      child: Image.asset('assets/image/images.png', height: AppSettings.heightImagePosition),
+                      child: Image.asset('assets/image/images.png',
+                          height: AppSettings.heightImagePosition),
                     ),
                     Positioned(
                       top: 20,
                       left: 10,
-                      child: Image.asset('assets/image/d.jpeg', height: AppSettings.heightImagePosition),
+                      child: Image.asset('assets/image/d.jpeg',
+                          height: AppSettings.heightImagePosition),
                     ),
                     const Positioned(
                       bottom: 50,
@@ -143,6 +146,7 @@ class ResultScreen extends StatelessWidget {
                   style: AppSettings.buttonStyleCertificate,
                   child: const Text('مشاركة النتيجة'),
                 ),
+                const BannerAds(),
               ],
             ),
           ),
@@ -161,6 +165,9 @@ class ResultScreen extends StatelessWidget {
     await image.delete();
   }
 }
-SizedBox sizedBox(double height){
-  return SizedBox(height: height,);
+
+SizedBox sizedBox(double height) {
+  return SizedBox(
+    height: height,
+  );
 }

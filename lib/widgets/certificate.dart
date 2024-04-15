@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../model/easy_questions.dart';
+import '../model/questions_list.dart';
 import '../widgets/app_settings.dart';
 import '../provider/base_provider.dart';
-import '../provider/name_provider.dart';
+import '../provider/names_provider.dart';
 
 class Certificate extends StatelessWidget {
   final QuizProvider provider;
@@ -23,7 +23,7 @@ class Certificate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nameProvider = Provider.of<NameProvider>(context);
+    final nameProvider = Provider.of<NamesProvider>(context);
     final theme = Theme.of(context).textTheme;
     final largeStyle = theme.titleLarge;
     final mediumStyle = theme.titleMedium!.copyWith(color: Colors.red);
@@ -80,7 +80,7 @@ class Certificate extends StatelessWidget {
                       style: mediumStyle.copyWith(
                           color: Colors.green.shade700, fontSize: 20)),
                   Text(
-                    provider.questions == mixAllEasy
+                    provider.questions == qMixAll
                         ? 'عدد الأسئلة: ${provider.questions.length} \n\nالأجوبة الصحيحة: ${provider.allScoreCorrect.toString()}\n\nالأجوبة الخاطئة: ${provider.allScoreInCorrect.toString()}'
                         : 'عدد الأسئلة: ${provider.questions.length} \n\nالأجوبة الصحيحة: ${provider.scoreCorrect.toString()}\n\nالأجوبة الخاطئة: ${provider.scoreIncorrect.toString()}',
                     style: largeStyle!.copyWith(

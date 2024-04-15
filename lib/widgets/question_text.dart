@@ -23,7 +23,7 @@ class QuestionText extends StatelessWidget {
       child: Text(
         '${(provider.currentQuestionIndex + 1).toString()}:  ${currentQuestion.question}',
         textDirection: AppSettings.rtl,
-        style: !AppSettings.platform
+        style: !AppSettings.platformIos
             ? Theme.of(context).textTheme.titleMedium!.copyWith(fontFamily: '')
             : CupertinoTheme.of(context)
                 .textTheme

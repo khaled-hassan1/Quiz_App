@@ -18,7 +18,7 @@ class AnswerOption extends StatelessWidget {
     return Container(
       margin: AppSettings.edgeInsetsAll(6.0),
       padding: const EdgeInsets.only(left: 10, right: 10),
-      child: !AppSettings.platform
+      child: !AppSettings.platformIos
           ? TextButton(
               onPressed: onTap,
               child: Text(

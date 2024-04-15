@@ -1,12 +1,12 @@
-import '../model/model.dart';
-import '../model/easy_questions.dart';
+import '../model/question_without_image.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class MixAllProvider extends QuizProvider {
-  MixAllProvider() : super(mixAllEasy);
+  MixAllProvider() : super(qMixAll);
 
   @override
-  List<Question> questions = mixAllEasy;
+  List<QuestionWithoutMedia> questions = qMixAll;
 
   @override
   String get page =>

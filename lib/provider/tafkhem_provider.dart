@@ -1,12 +1,12 @@
-import '../model/model.dart';
-import '../model/easy_questions.dart';
+import '../model/question_without_image.dart';
+import '../model/questions_list.dart';
 import './base_provider.dart';
 
 class TafkhemProvider extends QuizProvider {
   TafkhemProvider() : super(qTafkhemEasy);
 
   @override
-  List<Question> questions = qTafkhemEasy;
+  List<QuestionWithoutMedia> questions = qTafkhemEasy;
 
   @override
   String get page => 'الترقيق والتفخيم';

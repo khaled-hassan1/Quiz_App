@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'app_settings.dart';
+import './app_settings.dart';
 
 class NavigateButton extends StatelessWidget {
   final String page;
@@ -11,9 +11,8 @@ class NavigateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppSettings.platform
+    return AppSettings.platformIos
         ? CupertinoButton.filled(
-
             onPressed: fun,
             child: Text(
               page,
@@ -21,9 +20,9 @@ class NavigateButton extends StatelessWidget {
             ),
           )
         : TextButton(
-      style: AppSettings.buttonStyle.copyWith(
+            style: AppSettings.buttonStyle.copyWith(
                 padding:
-          MaterialStatePropertyAll(AppSettings.edgeInsetsAll(8))),
+                    MaterialStatePropertyAll(AppSettings.edgeInsetsAll(5))),
             onPressed: fun,
             child: Text(page),
           );
@@ -39,7 +38,7 @@ class NavigateButtonOptionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppSettings.platform
+    return AppSettings.platformIos
         ? CupertinoButton.filled(
             onPressed: fun,
             child: Text(

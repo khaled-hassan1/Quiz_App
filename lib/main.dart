@@ -3,14 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/medium_screen/tajweed_medium_screen.dart';
-import 'package:quiz_app/provider_medium/lam_medium_provider.dart';
-import 'package:quiz_app/provider_medium/tajweed_medium_provider.dart';
-import 'package:quiz_app/screens/difficult_screen.dart';
-import 'package:quiz_app/medium_screen/lam_medium_screen.dart';
-import 'package:quiz_app/screens/medium_screen.dart';
-import 'package:quiz_app/screens/options_screen.dart';
+import 'package:quiz_app/provider/sounds_provider.dart';
+import 'package:quiz_app/screens/sounds_screen.dart';
 
+import '../screens/options_screen.dart';
 import '../provider/mix_provider.dart';
 import '../screens/mix_screen.dart';
 import '../widgets/app_settings.dart';
@@ -25,16 +21,19 @@ import '../screens/failed_screen.dart';
 import '../provider/meem_provider.dart';
 import '../screens/meem_screen.dart';
 import '../provider/base_provider.dart';
-import '../provider/name_provider.dart';
+import 'provider/names_provider.dart';
 import '../provider/noon_provider.dart';
 import '../screens/noon_screen.dart';
-import '../screens/easy_test_screen.dart';
 import '../provider/modod_provider.dart';
 import '../screens/modod_screen.dart';
 import '../screens/result_screen.dart';
 import '../screens/certificate_screen.dart';
 import '../provider/tajweed_provider.dart';
 import '../widgets/platform_widget.dart';
+import '../provider/makharej_provider.dart';
+import '../provider/sifat_provider.dart';
+import '../screens/makharej_screen.dart';
+import '../screens/sifat_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +56,7 @@ void main() {
             create: (_) => NoonProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => NameProvider(),
+            create: (_) => NamesProvider(),
           ),
           ChangeNotifierProvider(
             create: (_) => MeemProvider(),
@@ -75,9 +74,13 @@ void main() {
             create: (_) => TafkhemProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => LamMediumProvider(),
-          ),ChangeNotifierProvider(
-            create: (_) => TajweedMediumProvider(),
+            create: (_) => MakharejProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => SifatProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => SoundsProvider(),
           ),
         ],
         child: const MyApp(),
@@ -105,7 +108,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: AppSettings.white,
             centerTitle: true,
             titleTextStyle: TextStyle(
-              fontSize: 25,
+              fontSize: 5,
             ),
           ),
           textButtonTheme: TextButtonThemeData(
@@ -123,7 +126,7 @@ class MyApp extends StatelessWidget {
               ),
               titleMedium: TextStyle(
                 color: AppSettings.white,
-                fontSize: 25,
+                fontSize: 20,
               )),
           colorScheme: ColorScheme.fromSeed(
             seedColor: AppSettings.main,
@@ -131,9 +134,11 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const OptionsScreen(),
-        // const EasyTestScreen(),
         routes: {
           MododScreen.route: (context) => const MododScreen(),
+          SoundsScreen.route: (context) => const SoundsScreen(),
+          SifatScreen.route: (context) => const SifatScreen(),
+          MakharejScreen.route: (context) => const MakharejScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
           ResultScreen.route: (context) =>
               ResultScreen(provider: provider, namePage: ''),
@@ -150,20 +155,16 @@ class MyApp extends StatelessWidget {
           MehtlanScreen.route: (context) => const MehtlanScreen(),
           TafkhemScreen.route: (context) => const TafkhemScreen(),
           MixScreen.route: (context) => const MixScreen(),
-          EasyTestScreen.route: (context) => const EasyTestScreen(),
-          DifficultTestScreen.route: (context) => const DifficultTestScreen(),
-          MediumTestScreen.route: (context) => const MediumTestScreen(),
-          LamMediumScreen.route: (context) => const LamMediumScreen(),
-          TajweedMediumScreen.route: (context) => const TajweedMediumScreen(),
         },
       ),
       iosBuilder: (context) => CupertinoApp(
         debugShowCheckedModeBanner: false,
         title: 'Quiz App',
-        home: const EasyTestScreen(),
+        home: const OptionsScreen(),
         routes: {
           MododScreen.route: (context) => const MododScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
+          SoundsScreen.route: (context) => const SoundsScreen(),
           ResultScreen.route: (context) =>
               ResultScreen(provider: provider, namePage: ''),
           MeemScreen.route: (context) => const MeemScreen(),
@@ -179,11 +180,7 @@ class MyApp extends StatelessWidget {
           MehtlanScreen.route: (context) => const MehtlanScreen(),
           TafkhemScreen.route: (context) => const TafkhemScreen(),
           MixScreen.route: (context) => const MixScreen(),
-          EasyTestScreen.route: (context) => const EasyTestScreen(),
-          DifficultTestScreen.route: (context) => const DifficultTestScreen(),
-          MediumTestScreen.route: (context) => const MediumTestScreen(),
-          LamMediumScreen.route: (context) => const LamMediumScreen(),
-          TajweedMediumScreen.route: (context) => const TajweedMediumScreen(),
+          MakharejScreen.route: (context) => const MakharejScreen(),
         },
         theme: const CupertinoThemeData(
           textTheme: CupertinoTextThemeData(
