@@ -15,10 +15,10 @@ class FailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppSettings.futureDelay(
       () => failedSound(),
-      () => Ads().loadAd(),
-      () => Ads().loadAd2(),
-      // () => null,
-      // () => null,
+      // () => Ads().loadAd(),
+      // () => Ads().loadAd2(),
+      () => null,
+      () => null,
       () => null,
     );
 
@@ -36,7 +36,7 @@ class FailedScreen extends StatelessWidget {
       ),
       Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment:AppSettings.mainAxisAlignmentCenter,
           children: [
             const TextButton(
               style: ButtonStyle(

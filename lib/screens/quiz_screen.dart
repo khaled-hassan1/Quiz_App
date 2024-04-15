@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import '../model/question_model.dart';
+import '../model/questions_list.dart';
 import '../widgets/app_settings.dart';
 import '../screens/failed_screen.dart';
 import '../screens/certificate_screen.dart';
@@ -35,6 +36,8 @@ class QuizScreen extends StatelessWidget {
     final currentQuestion = provider.questions[provider.currentQuestionIndex];
     final progress =
         (provider.currentQuestionIndex) / provider.questions.length;
+    final isQmakharej = provider.questions == qMakharej;
+    final isPhonics = provider.questions == qPhonics;
 
     return SafeArea(
       child: InteractiveViewer(
@@ -67,7 +70,7 @@ class QuizScreen extends StatelessWidget {
                                 ),
                                 AppSettings.sizedBox(10),
                                 Container(
-                                  alignment: Alignment.center,
+                                  alignment: AppSettings.alignmentCenter,
                                   margin: AppSettings.edgeInsetsAll(10),
                                   padding: AppSettings.edgeInsetsAll(4),
                                   child: Text(
@@ -78,8 +81,23 @@ class QuizScreen extends StatelessWidget {
                                         Theme.of(context).textTheme.titleMedium,
                                   ),
                                 ),
-                                AppSettings.sizedBox(10),
                                 RowNumOfQuestion(provider: provider),
+                                AppSettings.sizedBox(10),
+                                if (isQmakharej)
+                                  AppSettings.putPadding(
+                                    8.0,
+                                    ImageWidget(provider: provider),
+                                  ),
+                                if (isPhonics)
+                                  AppSettings.putPadding(
+                                    8.0,
+                                    HearingWidget(
+                                      provider: provider,
+                                      soundPaths: qPhonics[
+                                              provider.currentQuestionIndex]
+                                          .soundPath,
+                                    ),
+                                  ),
                                 QuestionText(provider: provider),
                                 ...buildAnswerOptions(
                                     provider, currentQuestion),
@@ -120,7 +138,7 @@ class QuizScreen extends StatelessWidget {
                                 ),
                                 AppSettings.sizedBox(10),
                                 Container(
-                                  alignment: Alignment.center,
+                                  alignment: AppSettings.alignmentCenter,
                                   margin: AppSettings.edgeInsetsAll(10),
                                   padding: AppSettings.edgeInsetsAll(4),
                                   child: Text(

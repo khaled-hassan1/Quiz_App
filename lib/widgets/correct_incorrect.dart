@@ -18,7 +18,7 @@ class RowCorrectAndInCorrect extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 60),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: AppSettings.spaceAround,
         children: [
           scoreDisplay(
             title: 'صحيح',
@@ -50,25 +50,27 @@ class RowCorrectAndInCorrect extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white10,
+        borderRadius: AppSettings.borderRadiusCircle(20),
+        color: AppSettings.white10,
       ),
-      height: 100,
+      height: AppSettings.hundred,
       width: 120,
-      alignment: Alignment.center,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text(
-          ':$title\n',
-          style: const TextStyle(color: AppSettings.white),
-        ),
-        AnimatedFlipCounter(
-          value: provider,
-          duration: const Duration(milliseconds: 400),
-          curve: title == 'صحيح' ? Curves.fastOutSlowIn : Curves.bounceOut,
-          textStyle: TextStyle(
-              fontWeight: AppSettings.w900, fontSize: 20, color: color),
-        ),
-      ]),
+      alignment: AppSettings.alignmentCenter,
+      child: Column(
+          mainAxisAlignment: AppSettings.mainAxisAlignmentCenter,
+          children: [
+            Text(
+              ':$title\n',
+              style: const TextStyle(color: AppSettings.white),
+            ),
+            AnimatedFlipCounter(
+              value: provider,
+              duration: const Duration(milliseconds: 400),
+              curve: title == 'صحيح' ? Curves.fastOutSlowIn : Curves.bounceOut,
+              textStyle: TextStyle(
+                  fontWeight: AppSettings.w900, fontSize: 20, color: color),
+            ),
+          ]),
     );
   }
 }

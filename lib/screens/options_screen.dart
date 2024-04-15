@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/screens/sounds_screen.dart';
+import 'package:quiz_app/screens/phonics_screen.dart';
 import '../screens/methlan_screen.dart';
 import '../screens/mix_screen.dart';
 import '../screens/noon_screen.dart';
@@ -11,7 +11,7 @@ import '../screens/sifat_screen.dart';
 import '../widgets/banner_ads.dart';
 import '../ads/ads_initial.dart';
 import '../provider/names_provider.dart';
-import '../widgets/button_m_and_s.dart';
+import '../widgets/button_with_widget.dart';
 import '../widgets/gradient_container.dart';
 import './lam_screen.dart';
 import './makharej_screen.dart';
@@ -39,8 +39,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
         .loadNameFromSharedPrefsMakharej();
     Provider.of<NamesProvider>(context, listen: false)
         .loadNameFromSharedPrefsSifat();
-    // Provider.of<NamesProvider>(context, listen: false)
-    //     .loadNameFromSharedPrefsSounds();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsSounds();
   }
 
   @override
@@ -48,14 +48,14 @@ class _OptionsScreenState extends State<OptionsScreen> {
     if (!AppSettings.isCertificateSoundCalled) {
       AppSettings.isCertificateSoundCalled = true;
       AppSettings.futureDelay(
-        () => Ads().loadAd(),
-        () => Ads().loadAd2(),
-        () => showTeacherDialog(context),
-        () => showNameDialog(context),
-        // () => null,
-        // () => null,
-        // () => null,
-        // () => null,
+        // () => Ads().loadAd(),
+        // () => Ads().loadAd2(),
+        // () => showTeacherDialog(context),
+        // () => showNameDialog(context),
+        () => null,
+        () => null,
+        () => null,
+        () => null,
       );
     }
     final p = Provider.of<NamesProvider>(context, listen: false);
@@ -65,8 +65,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
           GradientContainer(
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: AppSettings.mainAxisAlignmentCenter,
+                crossAxisAlignment: AppSettings.crossAxisAlignmentCenter,
                 children: [
                   Container(
                     width: double.infinity,
@@ -90,14 +90,14 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       },
                       page: 'مبادئ علم التجويد'),
                   AppSettings.sizesBoxOptionsScreen,
-                  ButtonMAndS(
+                  ButtonWithWidget(
                     fun: () {
-                      p.updateNameMakharej();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
                         MakharejScreen.route,
                       );
+                      p.updateNameMakharej();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) =>
@@ -105,33 +105,32 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
-                  ButtonMAndS(
+                  ButtonWithWidget(
                     fun: () {
-                      p.updateNameSifat();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
                         SifatScreen.route,
                       );
+                      p.updateNameSifat();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) => Text(value.textSifat),
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
-                  TextButton(
-                    onPressed: null,
-                    //  () {
-                    //   p.updateNameSounds();
-                    //   AppSettings.click();
-                    //   Navigator.pushNamed(
-                    //     context,
-                    //     SoundsScreen.route,
-                    //   );
-                    // },
+                  ButtonWithWidget(
+                    fun: () {
+                      p.updateNameSounds();
+                      AppSettings.click();
+                      Navigator.pushNamed(
+                        context,
+                        PhonicsScreen.route,
+                      );
+                    },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) =>
-                          const Text('الصوتيات ... قريبٌا'),
+                          Text(value.textSounds),
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
@@ -319,7 +318,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
           content: SizedBox(
             height: 200,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: AppSettings.mainAxisAlignmentCenter,
               children: [
                 Text(
                   'ملاحظة: لتحصل على الشهاده لابد أن تكون الأجوبة الصحيحة 7 فما فوق أو 50 فما فوق بالنسبة للاختبار على كل الأبواب بالتوفيق.',
@@ -469,9 +468,9 @@ class _OptionsScreenState extends State<OptionsScreen> {
             textDirection: rtl,
           ),
           content: SizedBox(
-            height: 100,
+            height: AppSettings.hundred,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: AppSettings.crossAxisAlignmentCenter,
               children: [
                 Text(
                   'إذا لم يكن المعلم مشارك فقم بالضغط على إلغاء.',

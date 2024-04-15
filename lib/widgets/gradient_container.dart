@@ -11,7 +11,7 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      alignment: AppSettings.alignmentCenter,
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
@@ -20,7 +20,7 @@ class GradientContainer extends StatelessWidget {
             ? const LinearGradient(colors: [
                 Color.fromRGBO(98, 90, 151, 1),
                 Color.fromRGBO(12, 3, 70, 1),
-                // Colors.white10,
+                // AppSettings.white10,
                 // Color.fromARGB(255, 1, 11, 29),
               ], begin: Alignment.topLeft, end: Alignment.bottomRight)
             : const LinearGradient(colors: [

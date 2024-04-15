@@ -1,5 +1,6 @@
 import './question_with_image.dart';
-import './question_without_image.dart';
+import 'question_with_sound.dart';
+import 'question_without_media.dart';
 
 final List<QuestionWithoutMedia> qMododEasy = [
   QuestionWithoutMedia(
@@ -389,166 +390,189 @@ final List<QuestionWithoutMedia> qTafkhemEasy = [
       correctAnswerIndex: 1),
 ]..shuffle();
 
-final List<QuestionWithImageOrSound> qMakharej = [
-  QuestionWithImageOrSound(
-      question: 'من باطن الشفة السفلى وأطراف الثنايا العليا مخرج حرف ...',
-      options: ['الثاء', 'الواو المدية', 'الفاء', 'الميم'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/fa.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'مما بين طرف اللسان وأطراف الثنايا العليا خارجا طرفه قليلا مخرج ...',
-      options: ['الميم والباء', 'السين والصاد والزاي', 'الظاء والذال والثاء'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/thal.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'من طرف اللسان بينه وبين ما فويق الثنايا العليا يخرج حرف ...',
-      options: ['الرا', 'اللام', 'النون'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/noon.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'من أدنى حافني اللسان معا إلى منتهى طرف اللسان وما يحاذيهما من الحنك الأعلى مما فويق الضاحكين والنابين والرباعيتين والثنيتين',
-      options: ['النون', 'الرا', 'اللام'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/lam.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'من مخرج النون من طرف اللسان بينه وبين ما فويق الثنايا العليا غير أنها أدخل في ظهر اللسان قليلا',
-      options: ['الرا', 'اللام', 'النون'],
-      correctAnswerIndex: 0,
-      imagePath: 'assets/image/ra.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'مما بين طرف اللسان وأصول الثنايا العليا',
-      options: ['الطاء والدال والتاء', 'الدال', 'الطاء', 'السين'],
-      correctAnswerIndex: 0,
-      imagePath: 'assets/image/dal.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'تخرج من الفرجة التي بين طرف اللسان والثنايا العليا ...',
-      options: ['التاء', 'السين', 'السين والصاد والزاي'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/sen.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'مما بين جذر اللسان والحنك اللحمي واللهاة',
-      options: [
-        'الجيم والشين والياء غبر المدية',
-        'القاف والكاف',
-        'الغين والخاء'
-      ],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/kha.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'من أقصى اللسان وما يليه من الحنك الأعلى وهو أسفل من مخرج القاف قليلا',
-      options: ['الخاء', 'الضاد', 'الكاف'],
-      correctAnswerIndex: 2,
-      imagePath: 'assets/image/kaf.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'من أقصى اللسان وما فوقه من الحنك الأعلى',
-      options: ['الخاء', 'القاف', 'الكاف'],
-      correctAnswerIndex: 1,
-      imagePath: 'assets/image/kaaf.png',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'من بين أول حافة اللسان وما يليها من الأضراس',
-      options: ['الخاء', 'الضاد', 'اللام'],
-      correctAnswerIndex: 1,
-      imagePath: 'assets/image/dAd.png',
-      soundPath: ''),
+final List<QuestionWithImage> qMakharej = [
+  QuestionWithImage(
+    question: 'من باطن الشفة السفلى وأطراف الثنايا العليا مخرج حرف ...',
+    options: ['الثاء', 'الواو المدية', 'الفاء', 'الميم'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/fa.png',
+  ),
+  QuestionWithImage(
+    question:
+        'مما بين طرف اللسان وأطراف الثنايا العليا خارجا طرفه قليلا مخرج ...',
+    options: ['الميم والباء', 'السين والصاد والزاي', 'الظاء والذال والثاء'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/thal.png',
+  ),
+  QuestionWithImage(
+    question: 'من طرف اللسان بينه وبين ما فويق الثنايا العليا يخرج حرف ...',
+    options: ['الراء', 'اللام', 'النون'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/noon.png',
+  ),
+  QuestionWithImage(
+    question:
+        'من أدنى حافني اللسان معا إلى منتهى طرف اللسان وما يحاذيهما من الحنك الأعلى مما فويق الضاحكين والنابين والرباعيتين والثنيتين',
+    options: ['النون', 'الراء', 'اللام'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/lam.png',
+  ),
+  QuestionWithImage(
+    question:
+        'من مخرج النون من طرف اللسان بينه وبين ما فويق الثنايا العليا غير أنها أدخل في ظهر اللسان قليلا',
+    options: ['الراء', 'اللام', 'النون'],
+    correctAnswerIndex: 0,
+    imagePath: 'assets/image/ra.png',
+  ),
+  QuestionWithImage(
+    question: 'مما بين طرف اللسان وأصول الثنايا العليا',
+    options: ['الطاء والدال والتاء', 'الدال', 'الطاء', 'السين'],
+    correctAnswerIndex: 0,
+    imagePath: 'assets/image/dal.png',
+  ),
+  QuestionWithImage(
+    question: 'تخرج من الفرجة التي بين طرف اللسان والثنايا العليا ...',
+    options: ['التاء', 'السين', 'السين والصاد والزاي'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/sen.png',
+  ),
+  QuestionWithImage(
+    question: 'مما بين جذر اللسان والحنك اللحمي واللهاة',
+    options: ['الجيم والشين والياء غبر المدية', 'القاف والكاف', 'الغين والخاء'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/kha.png',
+  ),
+  QuestionWithImage(
+    question:
+        'من أقصى اللسان وما يليه من الحنك الأعلى وهو أسفل من مخرج القاف قليلا',
+    options: ['الخاء', 'الضاد', 'الكاف'],
+    correctAnswerIndex: 2,
+    imagePath: 'assets/image/kaf.png',
+  ),
+  QuestionWithImage(
+    question: 'من أقصى اللسان وما فوقه من الحنك الأعلى',
+    options: ['الخاء', 'القاف', 'الكاف'],
+    correctAnswerIndex: 1,
+    imagePath: 'assets/image/kaaf.png',
+  ),
+  QuestionWithImage(
+    question: 'من بين أول حافة اللسان وما يليها من الأضراس',
+    options: ['الخاء', 'الضاد', 'اللام'],
+    correctAnswerIndex: 1,
+    imagePath: 'assets/image/dAd.png',
+  ),
 ]..shuffle();
 
-final List<QuestionWithImageOrSound> qSifat = [
-  QuestionWithImageOrSound(
-      question:
-          'الصوت الذي يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
-      options: ['الجهر', 'الهمس', 'الرخاوة'],
-      correctAnswerIndex: 0,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'الصوت الذي لا يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
-      options: ['الجهر', 'الهمس', 'الرخاوة'],
-      correctAnswerIndex: 1,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'الصوت الذي ينتج بحبس النفس في المخرج ثم اطلاقه تعريف صفة ...',
-      options: ['الشدة', 'البينية', 'الهمس'],
-      correctAnswerIndex: 0,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'الصوت الذي يضيق مجرى النفس في مخرجه تعريف صفة ...',
-      options: ['الشدة', 'البينية', 'الرخاوة'],
-      correctAnswerIndex: 2,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'صفة ليس لها ضد وألحقت بالصفات التي لها ضد لارتباطها بالشدة والرخاوة وتعريفها عدم كمال انحباس النفس وعدم كمال جريانه',
-      options: ['الشدة', 'البينية', 'الجر'],
-      correctAnswerIndex: 1,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط مع رجوع لسان المزمار للخلف واتجاه الصوت لأعلى تعريف صفة ...',
-      options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
-      correctAnswerIndex: 2,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'عدم ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط وعدم رجوع لسان المزمار للخلف واتجاه الصوت لأسفل تعريف صفة ...',
-      options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
-      correctAnswerIndex: 1,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'سمن يدخل على جسم الحرف فيمتلئ الفم بصداه تعريف صفة ...',
-      options: ['الإطباق', 'الاستفال', 'التفخيم'],
-      correctAnswerIndex: 2,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question: 'نحول يدخل على جسم الحرف فلا يمتلئ الفم بصداه تعريف صفة ...',
-      options: ['الانفتاح', 'الترقيق', 'الاستعلاء'],
-      correctAnswerIndex: 1,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'عدم وجود ارتفاعين في اللسان بينهما منخفض وعدم انحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
-      options: ['الانفتاح', 'الترقيق', 'الإطباق'],
-      correctAnswerIndex: 0,
-      imagePath: '',
-      soundPath: ''),
-  QuestionWithImageOrSound(
-      question:
-          'وجود ارتفاعين في اللسان بينهما منخفض وانحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
-      options: ['الانفتاح', 'الترقيق', 'الإطباق'],
-      correctAnswerIndex: 2,
-      imagePath: '',
-      soundPath: ''),
+final List<QuestionWithoutMedia> qSifat = [
+  QuestionWithoutMedia(
+    question: 'الصوت الذي يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
+    options: ['الجهر', 'الهمس', 'الرخاوة'],
+    correctAnswerIndex: 0,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'الصوت الذي لا يهتز الوتران الصوتيان عند النطق بالحرف تعريف صفة ...',
+    options: ['الجهر', 'الهمس', 'الرخاوة'],
+    correctAnswerIndex: 1,
+  ),
+  QuestionWithoutMedia(
+    question: 'الصوت الذي ينتج بحبس النفس في المخرج ثم اطلاقه تعريف صفة ...',
+    options: ['الشدة', 'البينية', 'الهمس'],
+    correctAnswerIndex: 0,
+  ),
+  QuestionWithoutMedia(
+    question: 'الصوت الذي يضيق مجرى النفس في مخرجه تعريف صفة ...',
+    options: ['الشدة', 'البينية', 'الرخاوة'],
+    correctAnswerIndex: 2,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'صفة ليس لها ضد وألحقت بالصفات التي لها ضد لارتباطها بالشدة والرخاوة وتعريفها عدم كمال انحباس النفس وعدم كمال جريانه',
+    options: ['الشدة', 'البينية', 'الجهر'],
+    correctAnswerIndex: 1,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط مع رجوع لسان المزمار للخلف واتجاه الصوت لأعلى تعريف صفة ...',
+    options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
+    correctAnswerIndex: 2,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'عدم ارتفاع أقصى اللسان ناحية الحنك اللحمي واللهاة فقط وعدم رجوع لسان المزمار للخلف واتجاه الصوت لأسفل تعريف صفة ...',
+    options: ['الانفتاح', 'الاستفال', 'الاستعلاء'],
+    correctAnswerIndex: 1,
+  ),
+  QuestionWithoutMedia(
+    question: 'سمن يدخل على جسم الحرف فيمتلئ الفم بصداه تعريف صفة ...',
+    options: ['الإطباق', 'الاستفال', 'التفخيم'],
+    correctAnswerIndex: 2,
+  ),
+  QuestionWithoutMedia(
+    question: 'نحول يدخل على جسم الحرف فلا يمتلئ الفم بصداه تعريف صفة ...',
+    options: ['الانفتاح', 'الترقيق', 'الاستعلاء'],
+    correctAnswerIndex: 1,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'عدم وجود ارتفاعين في اللسان بينهما منخفض وعدم انحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
+    options: ['الانفتاح', 'الترقيق', 'الإطباق'],
+    correctAnswerIndex: 0,
+  ),
+  QuestionWithoutMedia(
+    question:
+        'وجود ارتفاعين في اللسان بينهما منخفض وانحصار النفس بين وسط اللسان والحنك الأعلى تعريف صفة ...',
+    options: ['الانفتاح', 'الترقيق', 'الإطباق'],
+    correctAnswerIndex: 2,
+  ),
 ]..shuffle();
 
-final List<QuestionWithImageOrSound> qSounds = [
-  QuestionWithImageOrSound(
-      question: '..',
-      options: ['7 أحرف', '5 أحرف', 'حرف'],
+final List<QuestionWithSound> qPhonics = [
+  QuestionWithSound(
+      question: 'هل هناك أي خطأ في نطق الحروف؟',
+      options: ['لا', 'نعم'],
       correctAnswerIndex: 0,
-      imagePath: '',
-      soundPath: 'assets/sounds/click-button.mp3'),
+      soundPath: ['phonics/any-mistakes.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت الطاء والصاد ؟',
+      options: ['1', '2','لايوجد'],
+      correctAnswerIndex: 0,
+      soundPath: ['phonics/sad-taa-true.mp3', 'phonics/ya-no-ghunna.mp3']),
+  QuestionWithSound(
+      question: 'هل صوت ياء المد صحيح أم به غنه؟',
+      options: ['به غنه', 'صحيح'],
+      correctAnswerIndex: 1,
+      soundPath: ['phonics/ya-no-ghunna.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت اللام الصحيح؟',
+      options: ['1', '2','لايوجد'],
+      correctAnswerIndex: 1,
+      soundPath: ['phonics/lam-false.mp3', 'phonics/lam-true.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت الراء الصحيح؟',
+      correctAnswerIndex: 1,
+      options: ['1', '2','لايوجد'],
+      soundPath: ['phonics/ra-false.mp3', 'phonics/ra-true.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت الزاي الصحيح؟',
+      options: ['1', '2','لايوجد'],
+      correctAnswerIndex: 1,
+      soundPath: ['phonics/zay-false.mp3', 'phonics/zay-true.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت التاء الصحيح؟',
+      correctAnswerIndex: 1,
+      options: ['1', '2','لايوجد'],
+      soundPath: ['phonics/ta-false-1.mp3', 'phonics/ta-true-1.mp3']),
+  QuestionWithSound(
+      question: 'أين صوت التاء الصحيح؟',
+      options: ['2', '1', '3', '4','لايوجد'],
+      correctAnswerIndex: 3,
+      soundPath: [
+        'phonics/ta-false-2-1.mp3',
+        'phonics/ta-false-2-2.mp3',
+        'phonics/ta-false-2-3.mp3',
+        'phonics/ta-true-2.mp3'
+      ]),
 ]..shuffle();
 
 final List<QuestionWithoutMedia> qMixAll = [

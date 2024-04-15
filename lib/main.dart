@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/provider/sounds_provider.dart';
-import 'package:quiz_app/screens/sounds_screen.dart';
-
 import '../screens/options_screen.dart';
 import '../provider/mix_provider.dart';
 import '../screens/mix_screen.dart';
@@ -34,6 +31,8 @@ import '../provider/makharej_provider.dart';
 import '../provider/sifat_provider.dart';
 import '../screens/makharej_screen.dart';
 import '../screens/sifat_screen.dart';
+import 'provider/phonics_provider.dart';
+import 'screens/phonics_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -80,7 +79,7 @@ void main() {
             create: (_) => SifatProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => SoundsProvider(),
+            create: (_) => PhonicsProvider(),
           ),
         ],
         child: const MyApp(),
@@ -136,7 +135,7 @@ class MyApp extends StatelessWidget {
         home: const OptionsScreen(),
         routes: {
           MododScreen.route: (context) => const MododScreen(),
-          SoundsScreen.route: (context) => const SoundsScreen(),
+          PhonicsScreen.route: (context) => const PhonicsScreen(),
           SifatScreen.route: (context) => const SifatScreen(),
           MakharejScreen.route: (context) => const MakharejScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
@@ -164,7 +163,7 @@ class MyApp extends StatelessWidget {
         routes: {
           MododScreen.route: (context) => const MododScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
-          SoundsScreen.route: (context) => const SoundsScreen(),
+          PhonicsScreen.route: (context) => const PhonicsScreen(),
           ResultScreen.route: (context) =>
               ResultScreen(provider: provider, namePage: ''),
           MeemScreen.route: (context) => const MeemScreen(),

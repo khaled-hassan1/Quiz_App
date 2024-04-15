@@ -4,14 +4,19 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class AppSettings {
-
+  static const double hundred = 100.0;
+  static const MainAxisAlignment spaceAround = MainAxisAlignment.spaceAround;
+  static const MainAxisAlignment mainAxisAlignmentCenter =
+      MainAxisAlignment.center;
+  static const CrossAxisAlignment crossAxisAlignmentCenter =
+      CrossAxisAlignment.center;
   static final bool platformIos = Platform.isIOS;
+  static const Color white10 = Colors.white10;
+  static const Alignment alignmentCenter = Alignment.center;
   static bool isCertificateSoundCalled = false;
   static final player = AudioPlayer();
   static const TextAlign center = TextAlign.center;
-  static const String easy = 'المستوى السهل';
-  static const String medium = 'المستوى المتوسط';
-  static const String difficult = 'المستوى الصعب';
+
   static const TextDirection rtl = TextDirection.rtl;
   static const Color orange = Colors.orange;
   static const Color green = Color.fromARGB(255, 2, 247, 10);
@@ -76,10 +81,31 @@ class AppSettings {
   }
 
   static Future<void> click() async {
+    await makeSound('sounds/click-button.mp3');
+  }
+
+  static Future<void> soundPhonics(String path) async {
     try {
-      await AppSettings.player.play(AssetSource('sounds/click-button.mp3'));
+      // for (var paths in path) {
+      //   if (paths.isNotEmpty) {
+      //     await player.play(AssetSource(paths));
+      //   }
+      // }
+      return await AppSettings.player.play(AssetSource(path));
     } catch (e) {
       debugPrint('Error: $e');
     }
+  }
+
+  static Future<void> makeSound(String path) async {
+    try {
+      return await AppSettings.player.play(AssetSource(path));
+    } catch (e) {
+      debugPrint('Error: $e');
+    }
+  }
+
+  static Padding putPadding(double padding, Widget child) {
+    return Padding(padding: AppSettings.edgeInsetsAll(padding), child: child);
   }
 }

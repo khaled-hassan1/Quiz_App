@@ -50,13 +50,13 @@ class ResultScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.grey.shade100,
                           border: Border.all(color: Colors.black, width: 2),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: AppSettings.borderRadiusCircle(10),
                         ),
                         child: Column(
                           children: [
                             sizedBox(20),
                             Text.rich(
-                              textAlign: TextAlign.center,
+                              textAlign: AppSettings.center,
                               TextSpan(children: [
                                 TextSpan(
                                     text: 'شهادة تقدير ',
@@ -78,7 +78,7 @@ class ResultScreen extends StatelessWidget {
                               ]),
                             ),
                             Text('وذلك لاجتيازه/ها الاختبار علي $namePage\n',
-                                textAlign: TextAlign.center,
+                                textAlign: AppSettings.center,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
@@ -94,7 +94,7 @@ class ResultScreen extends StatelessWidget {
                                     fontSize: 20,
                                     color: Colors.black,
                                   ),
-                              textAlign: TextAlign.center,
+                              textAlign: AppSettings.center,
                             ),
                             sizedBox(60),
                           ],
