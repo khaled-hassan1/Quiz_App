@@ -30,7 +30,7 @@ class AppSettings {
     ),
     textStyle: const MaterialStatePropertyAll(
       TextStyle(
-          fontSize: 23, fontFamily: 'Marhey', fontWeight: FontWeight.w100),
+          fontSize: 21, fontFamily: 'Marhey', fontWeight: FontWeight.w100),
     ),
   );
 

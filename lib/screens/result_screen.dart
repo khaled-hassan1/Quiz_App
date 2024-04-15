@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart' as path;
 
 import '../widgets/app_settings.dart';
 import '../provider/names_provider.dart';
+import '../widgets/banner_ads.dart';
 
 class ResultScreen extends StatelessWidget {
   static String route = '/certificate-screen';
@@ -145,6 +146,7 @@ class ResultScreen extends StatelessWidget {
                   style: AppSettings.buttonStyleCertificate,
                   child: const Text('مشاركة النتيجة'),
                 ),
+                const BannerAds(),
               ],
             ),
           ),

@@ -112,7 +112,7 @@ class HearingWidget extends StatelessWidget {
     ScaffoldMessengerState scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.hideCurrentSnackBar();
     scaffoldMessenger.showSnackBar(
-      SnackBar(
+      SnackBar(backgroundColor: AppSettings.blue.withOpacity(0.5),
         duration: const Duration(seconds: 2),
         content: Text(
           (index + 1).toString(),

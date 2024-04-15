@@ -9,7 +9,6 @@ import '../screens/mix_screen.dart';
 import '../screens/noon_screen.dart';
 import '../screens/sifat_screen.dart';
 import '../widgets/banner_ads.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../ads/ads_initial.dart';
 import '../provider/names_provider.dart';
 import '../widgets/button_with_widget.dart';
@@ -51,12 +50,12 @@ class _OptionsScreenState extends State<OptionsScreen> {
       AppSettings.futureDelay(
         // () => Ads().loadAd(),
         // () => Ads().loadAd2(),
-        () => null,
-        () => null,
-        () => null,
-        () => null,
         // () => showTeacherDialog(context),
         // () => showNameDialog(context),
+        () => null,
+        () => null,
+        () => null,
+        () => null,
       );
     }
     final p = Provider.of<NamesProvider>(context, listen: false);
@@ -93,12 +92,12 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonWithWidget(
                     fun: () {
-                      p.updateNameMakharej();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
                         MakharejScreen.route,
                       );
+                      p.updateNameMakharej();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) =>
@@ -108,12 +107,12 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonWithWidget(
                     fun: () {
-                      p.updateNameSifat();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
                         SifatScreen.route,
                       );
+                      p.updateNameSifat();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) => Text(value.textSifat),

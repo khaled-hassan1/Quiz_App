@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/provider/phonics_provider.dart';
-import 'package:quiz_app/screens/phonics_screen.dart';
-
 import '../screens/options_screen.dart';
 import '../provider/mix_provider.dart';
 import '../screens/mix_screen.dart';
@@ -34,6 +31,8 @@ import '../provider/makharej_provider.dart';
 import '../provider/sifat_provider.dart';
 import '../screens/makharej_screen.dart';
 import '../screens/sifat_screen.dart';
+import 'provider/phonics_provider.dart';
+import 'screens/phonics_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -126,7 +125,7 @@ class MyApp extends StatelessWidget {
               ),
               titleMedium: TextStyle(
                 color: AppSettings.white,
-                fontSize: 25,
+                fontSize: 20,
               )),
           colorScheme: ColorScheme.fromSeed(
             seedColor: AppSettings.main,
