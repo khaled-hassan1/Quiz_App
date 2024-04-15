@@ -36,7 +36,7 @@ class FailedScreen extends StatelessWidget {
       ),
       Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment:AppSettings.mainAxisAlignmentCenter,
           children: [
             const TextButton(
               style: ButtonStyle(

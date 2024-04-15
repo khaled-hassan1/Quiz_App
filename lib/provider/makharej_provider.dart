@@ -6,7 +6,7 @@ class MakharejProvider extends QuizProvider {
   MakharejProvider() : super(qMakharej);
 
   @override
-  List<QuestionWithImageOrSound> questions = qMakharej;
+  List<QuestionWithImage> questions = qMakharej;
 
   @override
   String get page => 'مخارج الحروف';

@@ -1,8 +1,7 @@
 import 'question_model.dart';
 
-class QuestionWithImageOrSound implements Question {
+class QuestionWithImage implements Question {
   final String imagePath;
-  final String soundPath;
 
   @override
   final int correctAnswerIndex;
@@ -13,11 +12,10 @@ class QuestionWithImageOrSound implements Question {
   @override
   final String question;
 
-  QuestionWithImageOrSound({
+  QuestionWithImage({
     required this.correctAnswerIndex,
     required this.options,
     required this.question,
     required this.imagePath,
-    required this.soundPath,
   });
 }
