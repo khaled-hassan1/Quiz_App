@@ -74,11 +74,12 @@ class HearingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         soundPaths.length,
         (index) => AppSettings.putPadding(
-          8.0,
+          5.0,
           IconButton(
             tooltip: (index + 1).toString(),
             padding: AppSettings.edgeInsetsAll(15.0),
@@ -112,10 +113,11 @@ class HearingWidget extends StatelessWidget {
     ScaffoldMessengerState scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.hideCurrentSnackBar();
     scaffoldMessenger.showSnackBar(
-      SnackBar(backgroundColor: AppSettings.blue.withOpacity(0.5),
+      SnackBar(
+        backgroundColor: AppSettings.blue.withOpacity(0.5),
         duration: const Duration(seconds: 2),
         content: Text(
-          (index + 1).toString(),
+          'رقم  (${(index + 1).toString()})',
           style: Theme.of(context).textTheme.titleMedium,
           textAlign: AppSettings.center,
         ),

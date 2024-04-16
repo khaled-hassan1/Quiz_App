@@ -534,18 +534,18 @@ final List<QuestionWithSound> qPhonics = [
       correctAnswerIndex: 0,
       soundPath: ['phonics/any-mistakes.mp3']),
   QuestionWithSound(
-      question: 'أي صوت للميم هو صحيح؟',
+      question: 'أي صوت للميم هو الصحيح؟',
       options: ['3', '2','1'],
       correctAnswerIndex: 2,
       soundPath: ['phonics/mem-true.mp3','phonics/mem-false-1.mp3','phonics/mem-false-2.mp3']),
   QuestionWithSound(
-      question: 'هل الطاء المفتوحه صحيحة؟',
+      question: 'هل الطاء المفتوحة صحيحة؟',
       options: ['لا', 'نعم'],
       correctAnswerIndex: 1,
       soundPath: ['phonics/is-ta-true.mp3']),
   QuestionWithSound(
-      question: 'أين صوت الطاء والصاد ؟',
-      options: ['1', '2','لا يوجد'],
+      question: 'هل من خطأ في النطق في أي من الجزأين؟',
+      options: ['لا','نعم'],
       correctAnswerIndex: 0,
       soundPath: ['phonics/sad-taa-true.mp3', 'phonics/ya-no-ghunna.mp3']),
   QuestionWithSound(

@@ -182,11 +182,11 @@ class QuizScreen extends StatelessWidget {
       final option = e.value;
       return AnswerOption(
         option: option,
-        onTap: () {
+        onTap: () async {
           if (currentQuestion.correctAnswerIndex == index) {
-            makeSound('sounds/correct.mp3');
+            await makeSound('sounds/correct.mp3');
           } else {
-            makeSound('sounds/wrong.mp3');
+            await makeSound('sounds/wrong.mp3');
           }
           provider.answerQuestion(index);
         },
