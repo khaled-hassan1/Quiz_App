@@ -32,10 +32,10 @@ class CertificateScreen extends StatelessWidget {
     // }
     AppSettings.futureDelay(
       () => certificateSound(),
-      // () => Ads().loadAd2(),
-      // () => Ads().loadAd(),
-      () => null,
-      () => null,
+      () => Ads().loadAd2(),
+      () => Ads().loadAd(),
+      // () => null,
+      // () => null,
       () => null,
     );
     ScreenshotController screenshotController = ScreenshotController();

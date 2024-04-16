@@ -84,19 +84,6 @@ class AppSettings {
     await makeSound('sounds/click-button.mp3');
   }
 
-  static Future<void> soundPhonics(String path) async {
-    try {
-      // for (var paths in path) {
-      //   if (paths.isNotEmpty) {
-      //     await player.play(AssetSource(paths));
-      //   }
-      // }
-      return await AppSettings.player.play(AssetSource(path));
-    } catch (e) {
-      debugPrint('Error: $e');
-    }
-  }
-
   static Future<void> makeSound(String path) async {
     try {
       return await AppSettings.player.play(AssetSource(path));

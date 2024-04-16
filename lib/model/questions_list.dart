@@ -535,9 +535,13 @@ final List<QuestionWithSound> qPhonics = [
       soundPath: ['phonics/any-mistakes.mp3']),
   QuestionWithSound(
       question: 'أي صوت للميم هو الصحيح؟',
-      options: ['3', '2','1'],
+      options: ['3', '2', '1'],
       correctAnswerIndex: 2,
-      soundPath: ['phonics/mem-true.mp3','phonics/mem-false-1.mp3','phonics/mem-false-2.mp3']),
+      soundPath: [
+        'phonics/mem-true.mp3',
+        'phonics/mem-false-1.mp3',
+        'phonics/mem-false-2.mp3'
+      ]),
   QuestionWithSound(
       question: 'هل الطاء المفتوحة صحيحة؟',
       options: ['لا', 'نعم'],
@@ -545,7 +549,7 @@ final List<QuestionWithSound> qPhonics = [
       soundPath: ['phonics/is-ta-true.mp3']),
   QuestionWithSound(
       question: 'هل من خطأ في النطق في أي من الجزأين؟',
-      options: ['لا','نعم'],
+      options: ['لا', 'نعم'],
       correctAnswerIndex: 0,
       soundPath: ['phonics/sad-taa-true.mp3', 'phonics/ya-no-ghunna.mp3']),
   QuestionWithSound(
@@ -555,27 +559,27 @@ final List<QuestionWithSound> qPhonics = [
       soundPath: ['phonics/ya-no-ghunna.mp3']),
   QuestionWithSound(
       question: 'أين صوت اللام الصحيح؟',
-      options: ['1', '2','لا يوجد'],
+      options: ['1', '2', 'لا يوجد'],
       correctAnswerIndex: 1,
       soundPath: ['phonics/lam-false.mp3', 'phonics/lam-true.mp3']),
   QuestionWithSound(
       question: 'أين صوت الراء الصحيح؟',
       correctAnswerIndex: 1,
-      options: ['1', '2','لا يوجد'],
+      options: ['1', '2', 'لا يوجد'],
       soundPath: ['phonics/ra-false.mp3', 'phonics/ra-true.mp3']),
   QuestionWithSound(
       question: 'أين صوت الزاي الصحيح؟',
-      options: ['1', '2','لا يوجد'],
+      options: ['1', '2', 'لا يوجد'],
       correctAnswerIndex: 1,
       soundPath: ['phonics/zay-false.mp3', 'phonics/zay-true.mp3']),
   QuestionWithSound(
       question: 'أين صوت التاء الصحيح؟',
       correctAnswerIndex: 1,
-      options: ['1', '2','لايوجد'],
+      options: ['1', '2', 'لايوجد'],
       soundPath: ['phonics/ta-false-1.mp3', 'phonics/ta-true-1.mp3']),
   QuestionWithSound(
       question: 'أين صوت التاء الصحيح؟',
-      options: ['2', '1', '3', '4','لا يوجد'],
+      options: ['2', '1', '3', '4', 'لا يوجد'],
       correctAnswerIndex: 3,
       soundPath: [
         'phonics/ta-false-2-1.mp3',

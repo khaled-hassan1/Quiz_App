@@ -15,10 +15,10 @@ class FailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppSettings.futureDelay(
       () => failedSound(),
-      // () => Ads().loadAd(),
-      // () => Ads().loadAd2(),
-      () => null,
-      () => null,
+      () => Ads().loadAd(),
+      () => Ads().loadAd2(),
+      // () => null,
+      // () => null,
       () => null,
     );
 

@@ -48,14 +48,14 @@ class _OptionsScreenState extends State<OptionsScreen> {
     if (!AppSettings.isCertificateSoundCalled) {
       AppSettings.isCertificateSoundCalled = true;
       AppSettings.futureDelay(
-        // () => Ads().loadAd(),
-        // () => Ads().loadAd2(),
-        // () => showTeacherDialog(context),
-        // () => showNameDialog(context),
-        () => null,
-        () => null,
-        () => null,
-        () => null,
+        () => Ads().loadAd(),
+        () => Ads().loadAd2(),
+        () => showTeacherDialog(context),
+        () => showNameDialog(context),
+        // () => null,
+        // () => null,
+        // () => null,
+        // () => null,
       );
     }
     final p = Provider.of<NamesProvider>(context, listen: false);
@@ -219,7 +219,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
               ),
             ),
           ),
-          // const BannerAds(),
+          const BannerAds(),
         ],
       ),
     );

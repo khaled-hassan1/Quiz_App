@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 import '../model/question_model.dart';
 import '../model/questions_list.dart';
@@ -184,9 +183,9 @@ class QuizScreen extends StatelessWidget {
         option: option,
         onTap: () async {
           if (currentQuestion.correctAnswerIndex == index) {
-            await makeSound('sounds/correct.mp3');
+            await AppSettings.makeSound('sounds/correct.mp3');
           } else {
-            await makeSound('sounds/wrong.mp3');
+            await AppSettings.makeSound('sounds/wrong.mp3');
           }
           provider.answerQuestion(index);
         },
@@ -212,7 +211,7 @@ class QuizScreen extends StatelessWidget {
               TextButton(
                 child: const Text('خروج'),
                 onPressed: () {
-                  makeSound('sounds/click-button.mp3');
+                  AppSettings.makeSound('sounds/click-button.mp3');
                   Navigator.pop(context);
                 },
               ),
@@ -225,13 +224,5 @@ class QuizScreen extends StatelessWidget {
           duration: const Duration(seconds: 2),
         ),
       );
-  }
-
-  Future<void> makeSound([String path = 'sounds/click-button.mp3']) async {
-    try {
-      await AppSettings.player.play(AssetSource(path));
-    } catch (e) {
-      debugPrint('Error: $e');
-    }
   }
 }

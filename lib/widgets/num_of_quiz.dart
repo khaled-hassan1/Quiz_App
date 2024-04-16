@@ -93,7 +93,7 @@ class HearingWidget extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(AppSettings.white),
             ),
             onPressed: () {
-              AppSettings.soundPhonics(soundPaths[index]);
+              AppSettings.makeSound(soundPaths[index]);
               if (soundPaths.length >= 2) {
                 snackBaar(context, index);
               }
