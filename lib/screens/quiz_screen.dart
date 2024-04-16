@@ -11,6 +11,8 @@ import '../widgets/answer_option.dart';
 import '../widgets/banner_ads.dart';
 import '../widgets/correct_incorrect.dart';
 import '../widgets/gradient_container.dart';
+import '../widgets/hearing_button.dart';
+import '../widgets/image_widget.dart';
 import '../widgets/num_of_quiz.dart';
 import '../widgets/question_text.dart';
 
