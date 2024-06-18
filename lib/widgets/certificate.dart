@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../model/questions_list.dart';
+import '../provider/check_teacher_provider.dart';
 import '../widgets/app_settings.dart';
 import '../provider/base_provider.dart';
 import '../provider/names_provider.dart';
@@ -27,10 +28,8 @@ class Certificate extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     final largeStyle = theme.titleLarge;
     final mediumStyle = theme.titleMedium!.copyWith(color: Colors.red);
-    final isMohamedAbuSamra = nameProvider.teacherName == 'محمد أبو سمرة' ||
-        nameProvider.teacherName == 'محمد ابو سمره' ||
-        nameProvider.teacherName == 'محمد أبو سمره' ||
-        nameProvider.teacherName == 'محمد ابو سمرة';
+    final isTeacherPressed =
+        Provider.of<CheckSettingsProvider>(context, listen: false).isTeacher;
 
     return Screenshot(
       controller: screenshotController,
@@ -95,9 +94,9 @@ class Certificate extends StatelessWidget {
           buildLeftLogo(),
           buildRightLogo(),
           buildSignature(),
-          buildSignatureName(isMohamedAbuSamra),
+          buildSignatureName(nameProvider),
           buildDateTime(provider),
-          buildSignatureImage(isMohamedAbuSamra),
+          buildSignatureImage(nameProvider, isTeacherPressed),
         ],
       ),
     );
@@ -148,13 +147,15 @@ Widget buildSignature() {
       ));
 }
 
-Widget buildSignatureName(bool isMohamedAbuSamra) {
+Widget buildSignatureName(NamesProvider namesProvider) {
   return Positioned(
       bottom: 20,
       left: 10,
       child: padding(
         Text(
-          isMohamedAbuSamra ? 'أ/محمد أبو سمرة' : 'أ.م/خالد حسن غالي',
+          namesProvider.teacherName != null
+              ? 'أ/${namesProvider.teacherName}'
+              : namesProvider.defaultTeacher,
           style: const TextStyle(
               color: AppSettings.red, fontSize: 16, fontFamily: 'Rakkas'),
         ),
@@ -177,25 +178,43 @@ Widget buildDateTime(QuizProvider provider) {
       ));
 }
 
-Widget buildSignatureImage(bool isMohamedAbuSamra) {
+Widget buildSignatureImage(NamesProvider provider, bool isTeacherPressed) {
+  final isMohamedAbuSamra = provider.teacherName == 'محمد أبو سمرة';
+  final isMe = provider.teacherName == 'خالد حسن غالي';
   debugPrint('Is Mohamed Abu Samra: $isMohamedAbuSamra');
+  debugPrint('Is Me: $isMe');
+  debugPrint('Is Teacher: $isTeacherPressed');
+  // Determine which image to show based on the current state
+  ImageProvider<Object>? imageProvider;
+  if (isTeacherPressed) {
+    imageProvider = FileImage(provider.a);
+  } else if (isMohamedAbuSamra) {
+    imageProvider = provider.assetImageTeacher;
+  } else if (isMe) {
+    imageProvider = provider.assetImageMe;
+  } else {
+    isTeacherPressed = true;
+    imageProvider = FileImage(provider.a);
+  }
 
-  const assetImageTeacher = AssetImage('assets/image/teacher.png');
-  const assetImageMe = AssetImage('assets/image/me.png');
   return Positioned(
-      bottom: 10,
-      left: isMohamedAbuSamra ? 130 : 140,
-      child: Transform.rotate(
-        angle: pi / 20,
-        child: padding(
-          FadeInImage(
-            placeholder: isMohamedAbuSamra ? assetImageTeacher : assetImageMe,
-            image: isMohamedAbuSamra ? assetImageTeacher : assetImageMe,
-            height: 50,
-            width: 90,
+    bottom: 14,
+    left: isMohamedAbuSamra ? 140 : 140,
+    child: Transform.rotate(
+      angle: pi / 20,
+      child: SizedBox(
+        width: 90,
+        height: 45,
+        child: ClipRect(
+          child: FadeInImage(
+            fit: isTeacherPressed ? BoxFit.cover : BoxFit.scaleDown,
+            placeholder: imageProvider,
+            image: imageProvider,
           ),
         ),
-      ));
+      ),
+    ),
+  );
 }
 
 Padding padding(Widget child) {

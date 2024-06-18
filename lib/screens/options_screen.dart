@@ -3,24 +3,23 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/screens/phonics_screen.dart';
-import '../screens/methlan_screen.dart';
-import '../screens/mix_screen.dart';
-import '../screens/noon_screen.dart';
-import '../screens/sifat_screen.dart';
+import '../screens/phonics_screen.dart';
+import './alph_screens/methlan_screen.dart';
+import './alph_screens/mix_screen.dart';
+import './alph_screens/noon_screen.dart';
+import './alph_screens/sifat_screen.dart';
 import '../widgets/banner_ads.dart';
 import '../ads/ads_initial.dart';
 import '../provider/names_provider.dart';
 import '../widgets/button_with_widget.dart';
 import '../widgets/gradient_container.dart';
-import './lam_screen.dart';
-import './makharej_screen.dart';
-import './meem_screen.dart';
-import './modod_screen.dart';
-import './tafkhem_screen.dart';
-import './tajwed_screen.dart';
+import './alph_screens/lam_screen.dart';
+import './alph_screens/makharej_screen.dart';
+import './alph_screens/meem_screen.dart';
+import './alph_screens/modod_screen.dart';
+import './alph_screens/tafkhem_screen.dart';
+import './alph_screens/tajwed_screen.dart';
 import '../widgets/app_settings.dart';
-import '../widgets/navigate_button.dart';
 
 class OptionsScreen extends StatefulWidget {
   static const String route = '/options-screen';
@@ -41,24 +40,47 @@ class _OptionsScreenState extends State<OptionsScreen> {
         .loadNameFromSharedPrefsSifat();
     Provider.of<NamesProvider>(context, listen: false)
         .loadNameFromSharedPrefsSounds();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsLam();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsMabade();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsMedod();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsMeem();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsMethlen();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsNoon();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsTest();
+    Provider.of<NamesProvider>(context, listen: false)
+        .loadNameFromSharedPrefsTarqeq();
   }
 
   @override
   Widget build(BuildContext context) {
+    // final isTeacherPressed =
+    //     Provider.of<CheckSettingsProvider>(context, listen: false).isTeacher;
     if (!AppSettings.isCertificateSoundCalled) {
       AppSettings.isCertificateSoundCalled = true;
       AppSettings.futureDelay(
         () => Ads().loadAd(),
         () => Ads().loadAd2(),
-        () => showTeacherDialog(context),
+        () {
+          // if (!isTeacherPressed) {
+          //   showTeacherDialog(context);
+          // }
+          showTeacherDialog(context);
+        },
         () => showNameDialog(context),
-        // () => null,
         // () => null,
         // () => null,
         // () => null,
       );
     }
-    final p = Provider.of<NamesProvider>(context, listen: false);
+    final nameProvider = Provider.of<NamesProvider>(context, listen: false);
+
     return SafeArea(
       child: Stack(
         children: [
@@ -81,14 +103,38 @@ class _OptionsScreenState extends State<OptionsScreen> {
                               .navLargeTitleTextStyle,
                     ),
                   ),
+                  Container(
+                    width: double.infinity,
+                    alignment: Alignment.topCenter,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, _) => Text(
+                        value.teacherName == null
+                            ? value.defaultTeacher
+                            : 'أ/${value.teacherName}',
+                        style: !AppSettings.platformIos
+                            ? Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(color: Colors.tealAccent)
+                            : CupertinoTheme.of(context)
+                                .textTheme
+                                .navLargeTitleTextStyle,
+                      ),
+                    ),
+                  ),
                   if (!AppSettings.platformIos) AppSettings.sizedBox(30),
-                  NavigateButton(
+                  ButtonWithWidget(
                       fun: () {
                         AppSettings.click();
                         ();
                         Navigator.pushNamed(context, TajweedScreen.route);
+                        nameProvider.updateNameMadabe();
                       },
-                      page: 'مبادئ علم التجويد'),
+                      child: Consumer<NamesProvider>(
+                        builder: (context, value, child) =>
+                            Text(value.textMabade),
+                      )),
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonWithWidget(
                     fun: () {
@@ -97,7 +143,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                         context,
                         MakharejScreen.route,
                       );
-                      p.updateNameMakharej();
+                      nameProvider.updateNameMakharej();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) =>
@@ -112,7 +158,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                         context,
                         SifatScreen.route,
                       );
-                      p.updateNameSifat();
+                      nameProvider.updateNameSifat();
                     },
                     child: Consumer<NamesProvider>(
                       builder: (context, value, child) => Text(value.textSifat),
@@ -121,7 +167,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   AppSettings.sizesBoxOptionsScreen,
                   ButtonWithWidget(
                     fun: () {
-                      p.updateNameSounds();
+                      nameProvider.updateNameSounds();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
@@ -134,9 +180,12 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
-                    page: 'النون الساكنة والتنوين',
+                  ButtonWithWidget(
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) => Text(value.textNoon),
+                    ),
                     fun: () {
+                      nameProvider.updateNameNoon();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
@@ -145,8 +194,9 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     },
                   ),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
+                  ButtonWithWidget(
                     fun: () {
+                      nameProvider.updateNameMeem();
                       AppSettings.click();
                       ();
                       Navigator.pushNamed(
@@ -154,22 +204,29 @@ class _OptionsScreenState extends State<OptionsScreen> {
                         MeemScreen.route,
                       );
                     },
-                    page: 'الميم الساكنة',
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) => Text(value.textMeem),
+                    ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
-                      fun: () {
-                        AppSettings.click();
-                        ();
-                        Navigator.pushNamed(
-                          context,
-                          MododScreen.route,
-                        );
-                      },
-                      page: 'المدود'),
+                  ButtonWithWidget(
+                    fun: () {
+                      nameProvider.updateNameMedod();
+                      AppSettings.click();
+                      ();
+                      Navigator.pushNamed(
+                        context,
+                        MododScreen.route,
+                      );
+                    },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) => Text(value.textMedod),
+                    ),
+                  ),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
+                  ButtonWithWidget(
                       fun: () {
+                        nameProvider.updateNameLam();
                         AppSettings.click();
                         ();
                         Navigator.pushNamed(
@@ -177,32 +234,45 @@ class _OptionsScreenState extends State<OptionsScreen> {
                           LamScreen.route,
                         );
                       },
-                      page: 'اللامات'),
+                      child: Consumer<NamesProvider>(
+                        builder: (context, value, child) => Text(value.textLam),
+                      )),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
-                      fun: () {
-                        AppSettings.click();
-                        ();
-                        Navigator.pushNamed(
-                          context,
-                          MehtlanScreen.route,
-                        );
-                      },
-                      page: 'المتماثلان والمتقاربان والمتجانسان'),
+                  ButtonWithWidget(
+                    fun: () {
+                      nameProvider.updateNameMethlen();
+                      AppSettings.click();
+                      ();
+                      Navigator.pushNamed(
+                        context,
+                        MehtlanScreen.route,
+                      );
+                    },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) =>
+                          Text(value.textMethlen),
+                    ),
+                  ),
                   AppSettings.sizesBoxOptionsScreen,
-                  NavigateButton(
-                      fun: () {
-                        AppSettings.click();
-                        ();
-                        Navigator.pushNamed(
-                          context,
-                          TafkhemScreen.route,
-                        );
-                      },
-                      page: 'الترقيق والتفخيم'),
+                  ButtonWithWidget(
+                    fun: () {
+                      nameProvider.updateNameTarqeq();
+                      AppSettings.click();
+                      ();
+                      Navigator.pushNamed(
+                        context,
+                        TafkhemScreen.route,
+                      );
+                    },
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) =>
+                          Text(value.textTarqeq),
+                    ),
+                  ),
                   AppSettings.sizedBox(40),
                   FilledButton(
                     onPressed: () {
+                      nameProvider.updateNameTest();
                       AppSettings.click();
                       Navigator.pushNamed(
                         context,
@@ -210,8 +280,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       );
                     },
                     style: AppSettings.buttonStyle,
-                    child: const Text(
-                      'اختبار على كل الأبواب',
+                    child: Consumer<NamesProvider>(
+                      builder: (context, value, child) => Text(value.textTest),
                     ),
                   ),
                   AppSettings.sizesBoxOptionsScreen,
@@ -233,6 +303,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
     if (!AppSettings.platformIos) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) {
           return AlertDialog(
             title: Text(
@@ -279,16 +350,16 @@ class _OptionsScreenState extends State<OptionsScreen> {
             ),
             actions: [
               AppSettings.sizedBox(20),
-              TextButton(
-                onPressed: () {
-                  AppSettings.click();
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'إلغاء',
-                  style: TextStyle(color: Colors.grey.shade900),
-                ),
-              ),
+              // TextButton(
+              //   onPressed: () {
+              //     AppSettings.click();
+              //     Navigator.pop(context);
+              //   },
+              //   child: Text(
+              //     'إلغاء',
+              //     style: TextStyle(color: Colors.grey.shade900),
+              //   ),
+              // ),
               TextButton(
                 onPressed: () {
                   if (!formKey.currentState!.validate()) {
@@ -385,145 +456,223 @@ class _OptionsScreenState extends State<OptionsScreen> {
     }
   }
 
-  Future<void> showTeacherDialog(BuildContext context) async {
-    TextEditingController controller = TextEditingController();
+  // Future<void> showTeacherDialog(BuildContext context) async {
+  //   TextEditingController controller = TextEditingController();
+  //   final provider = Provider.of<NamesProvider>(context, listen: false);
+  //   TextDirection rtl = TextDirection.rtl;
+  //   if (!AppSettings.platformIos) {
+  //     return showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return AlertDialog(
+  //           title: Text(
+  //             'اسم المعلم المشارك كما قال لك: ',
+  //             textDirection: rtl,
+  //           ),
+  //           content: SizedBox(
+  //             height: 130,
+  //             child: SingleChildScrollView(
+  //               child: Column(
+  //                 children: [
+  //                   Text(
+  //                     'إذا لم يكن المعلم مشارك فقم بالضغط على إلغاء.',
+  //                     textDirection: rtl,
+  //                     style: TextStyle(
+  //                       color: Colors.grey.shade900,
+  //                       fontFamily: '',
+  //                     ),
+  //                   ),
+  //                   AppSettings.sizedBox(20),
+  //                   TextField(
+  //                     textAlignVertical: TextAlignVertical.center,
+  //                     onChanged: (value) {
+  //                       if (value.isEmpty) {
+  //                         return;
+  //                       }
+  //                     },
+  //                     textDirection: rtl,
+  //                     controller: controller,
+  //                     style: const TextStyle(fontSize: 20),
+  //                     decoration: InputDecoration(
+  //                       hintText: 'اسم المعلم...',
+  //                       hintTextDirection: rtl,
+  //                     ),
+  //                   ),
+  //                   AppSettings.sizedBox(20),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //           actions: [
+  //             AppSettings.sizedBox(50),
+  //             TextButton(
+  //               onPressed: () {
+  //                 AppSettings.click();
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Text(
+  //                 'إلغاء',
+  //                 style: TextStyle(color: Colors.grey.shade900),
+  //               ),
+  //             ),
+  //             TextButton(
+  //               onPressed: () {
+  //                 String teacherName = controller.text.trim();
+  //                 provider.getNameTeacher(teacherName);
+  //                 AppSettings.click();
+  //                 Navigator.pop(context);
+  //               },
+  //               child: const Text(
+  //                 'تأكيد',
+  //               ),
+  //             ),
+  //           ],
+  //         );
+  //       },
+  //     );
+  //   } else {
+  //     return showCupertinoModalPopup(
+  //       context: context,
+  //       builder: (context) => CupertinoAlertDialog(
+  //         title: Text(
+  //           'اسم المعلم المشارك كما قال لك: ',
+  //           textDirection: rtl,
+  //         ),
+  //         content: SizedBox(
+  //           height: AppSettings.hundred,
+  //           child: Column(
+  //             crossAxisAlignment: AppSettings.crossAxisAlignmentCenter,
+  //             children: [
+  //               Text(
+  //                 'إذا لم يكن المعلم مشارك فقم بالضغط على إلغاء.',
+  //                 textDirection: rtl,
+  //                 style: TextStyle(
+  //                   color: Colors.grey.shade900,
+  //                 ),
+  //               ),
+  //               AppSettings.sizedBox(20),
+  //               Card(
+  //                 child: CupertinoTextFormFieldRow(
+  //                   onChanged: (value) {
+  //                     if (value.isEmpty) {
+  //                       return;
+  //                     }
+  //                   },
+  //                   textAlign: TextAlign.right,
+  //                   controller: controller,
+  //                   style: const TextStyle(
+  //                     fontSize: 20,
+  //                   ),
+  //                   placeholder: '...اسمك',
+  //                   autofocus: false,
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //         actions: [
+  //           CupertinoDialogAction(
+  //             onPressed: () {
+  //               AppSettings.click();
+  //               Navigator.pop(context);
+  //             },
+  //             isDestructiveAction: true,
+  //             child: const Text(
+  //               'إلغاء',
+  //             ),
+  //           ),
+  //           CupertinoDialogAction(
+  //             isDefaultAction: true,
+  //             onPressed: () {
+  //               String teacherName = controller.text.trim();
+  //               provider.getNameTeacher(teacherName);
+  //               AppSettings.click();
+  //               Navigator.pop(context);
+  //             },
+  //             child: const Text(
+  //               'تأكيد',
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //   }
+  // }
+
+  Future<void> showTeacherDialog(
+    BuildContext context,
+  ) async {
     final provider = Provider.of<NamesProvider>(context, listen: false);
+    // final newTeacher = Provider.of<NewTeacherItem>(context, listen: false);
     TextDirection rtl = TextDirection.rtl;
     if (!AppSettings.platformIos) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'اسم المعلم المشارك كما قال لك: ',
+              'اختر المعلم:  ',
               textDirection: rtl,
             ),
-            content: SizedBox(
-              height: 130,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      'إذا لم يكن المعلم مشارك فقم بالضغط على إلغاء.',
-                      textDirection: rtl,
-                      style: TextStyle(
-                        color: Colors.grey.shade900,
-                        fontFamily: '',
-                      ),
-                    ),
-                    AppSettings.sizedBox(20),
-                    TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      onChanged: (value) {
-                        if (value.isEmpty) {
-                          return;
-                        }
+            content:
+                //  data == null
+                //     ? const Center(
+                //         child: Text('انتظر...'),
+                //       )
+                //     :
+                SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: AppSettings.mainAxisAlignmentCenter,
+                children: [
+                  AppSettings.sizedBox(20),
+                  AppSettings.putPadding(
+                      2.0,
+                      ButtonWithWidget(
+                        fun: () {
+                          String teacherName = 'خالد حسن غالي';
+                          provider.getNameTeacher(teacherName);
+                          AppSettings.click();
+                          Navigator.pop(context);
+                        },
+                        child: const Text('خالد حسن غالي'),
+                      )),
+                  AppSettings.sizedBox(20),
+                  AppSettings.putPadding(
+                    2.0,
+                    ButtonWithWidget(
+                      fun: () {
+                        String teacherName = 'محمد أبو سمرة';
+                        provider.getNameTeacher(teacherName);
+                        AppSettings.click();
+                        Navigator.pop(context);
                       },
-                      textDirection: rtl,
-                      controller: controller,
-                      style: const TextStyle(fontSize: 20),
-                      decoration: InputDecoration(
-                        hintText: 'اسم المعلم...',
-                        hintTextDirection: rtl,
-                      ),
+                      child: const Text('محمد أبو سمرة'),
                     ),
-                    AppSettings.sizedBox(20),
-                  ],
-                ),
+                  ),
+                  AppSettings.sizedBox(20),
+                  // ...newTeacher.items.map(
+                  //   (item) => AppSettings.putPadding(
+                  //     2.0,
+                  //     ButtonWithWidget(
+                  //       fun: () {
+                  //         // provider.a = File(item.imagePath.path);
+                  //         // item.name = data['name'];
+                  //         debugPrint(
+                  //             '============================================${item.name}');
+                  //         provider.getNameTeacher(item.name!);
+                  //         AppSettings.click();
+                  //         Navigator.pop(context);
+                  //       },
+                  //       child: Text(item.name!),
+                  //     ),
+                  //   ),
+                  // ),
+                ],
               ),
             ),
-            actions: [
-              AppSettings.sizedBox(50),
-              TextButton(
-                onPressed: () {
-                  AppSettings.click();
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'إلغاء',
-                  style: TextStyle(color: Colors.grey.shade900),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  String teacherName = controller.text.trim();
-                  provider.getNameTeacher(teacherName);
-                  AppSettings.click();
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  'تأكيد',
-                ),
-              ),
-            ],
           );
         },
-      );
-    } else {
-      return showCupertinoModalPopup(
-        context: context,
-        builder: (context) => CupertinoAlertDialog(
-          title: Text(
-            'اسم المعلم المشارك كما قال لك: ',
-            textDirection: rtl,
-          ),
-          content: SizedBox(
-            height: AppSettings.hundred,
-            child: Column(
-              crossAxisAlignment: AppSettings.crossAxisAlignmentCenter,
-              children: [
-                Text(
-                  'إذا لم يكن المعلم مشارك فقم بالضغط على إلغاء.',
-                  textDirection: rtl,
-                  style: TextStyle(
-                    color: Colors.grey.shade900,
-                  ),
-                ),
-                AppSettings.sizedBox(20),
-                Card(
-                  child: CupertinoTextFormFieldRow(
-                    onChanged: (value) {
-                      if (value.isEmpty) {
-                        return;
-                      }
-                    },
-                    textAlign: TextAlign.right,
-                    controller: controller,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
-                    placeholder: '...اسمك',
-                    autofocus: false,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            CupertinoDialogAction(
-              onPressed: () {
-                AppSettings.click();
-                Navigator.pop(context);
-              },
-              isDestructiveAction: true,
-              child: const Text(
-                'إلغاء',
-              ),
-            ),
-            CupertinoDialogAction(
-              isDefaultAction: true,
-              onPressed: () {
-                String teacherName = controller.text.trim();
-                provider.getNameTeacher(teacherName);
-                AppSettings.click();
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'تأكيد',
-              ),
-            ),
-          ],
-        ),
       );
     }
   }

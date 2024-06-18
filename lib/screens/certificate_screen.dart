@@ -27,18 +27,19 @@ class CertificateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (!AppSettings.isCertificateSoundCalled) {
-    //   AppSettings.isCertificateSoundCalled = true;
-    // }
+    ScreenshotController screenshotController = ScreenshotController();
+    if (!AppSettings.isCertificateSoundCalled) {
+      AppSettings.isCertificateSoundCalled = true;
+    }
     AppSettings.futureDelay(
       () => certificateSound(),
       () => Ads().loadAd2(),
       () => Ads().loadAd(),
-      // () => null,
-      // () => null,
       () => null,
+      // () => null,
+      // () => null,
+      // () => null,
     );
-    ScreenshotController screenshotController = ScreenshotController();
 
     return SafeArea(
       child: Scaffold(

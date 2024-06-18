@@ -1,42 +1,54 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/auth_screen.dart';
+import '../provider/check_teacher_provider.dart';
+import './firebase_options.dart';
 import '../screens/options_screen.dart';
 import '../provider/mix_provider.dart';
-import '../screens/mix_screen.dart';
+import '../provider/new_teacher_item.dart';
+import '../screens/alph_screens/mix_screen.dart';
 import '../widgets/app_settings.dart';
 import '../provider/lam_provider.dart';
 import '../provider/methlan_provider.dart';
 import '../provider/tafkhem_provider.dart';
-import '../screens/lam_screen.dart';
-import '../screens/methlan_screen.dart';
-import '../screens/tafkhem_screen.dart';
-import '../screens/tajwed_screen.dart';
+import '../screens/alph_screens/lam_screen.dart';
+import '../screens/alph_screens/methlan_screen.dart';
+import '../screens/alph_screens/tafkhem_screen.dart';
+import '../screens/alph_screens/tajwed_screen.dart';
 import '../screens/failed_screen.dart';
 import '../provider/meem_provider.dart';
-import '../screens/meem_screen.dart';
+import '../screens/alph_screens/meem_screen.dart';
 import '../provider/base_provider.dart';
-import 'provider/names_provider.dart';
+import '../provider/names_provider.dart';
 import '../provider/noon_provider.dart';
-import '../screens/noon_screen.dart';
+import '../screens/alph_screens/noon_screen.dart';
 import '../provider/modod_provider.dart';
-import '../screens/modod_screen.dart';
+import '../screens/alph_screens/modod_screen.dart';
 import '../screens/result_screen.dart';
 import '../screens/certificate_screen.dart';
 import '../provider/tajweed_provider.dart';
 import '../widgets/platform_widget.dart';
 import '../provider/makharej_provider.dart';
 import '../provider/sifat_provider.dart';
-import '../screens/makharej_screen.dart';
-import '../screens/sifat_screen.dart';
-import 'provider/phonics_provider.dart';
-import 'screens/phonics_screen.dart';
+import '../screens/alph_screens/makharej_screen.dart';
+import '../screens/alph_screens/sifat_screen.dart';
+import '../provider/phonics_provider.dart';
+import '../screens/phonics_screen.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await MobileAds.instance.initialize();
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(
@@ -80,6 +92,12 @@ void main() {
           ),
           ChangeNotifierProvider(
             create: (_) => PhonicsProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => CheckSettingsProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => NewTeacherItem(),
           ),
         ],
         child: const MyApp(),
@@ -132,8 +150,11 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const OptionsScreen(),
+        home: const AuthWrapper(),
+        //  const UserOption(),
+        // const OptionsScreen(),
         routes: {
+          // WaitingScreen.route: (context) => const WaitingScreen(),
           MododScreen.route: (context) => const MododScreen(),
           PhonicsScreen.route: (context) => const PhonicsScreen(),
           SifatScreen.route: (context) => const SifatScreen(),
@@ -154,13 +175,16 @@ class MyApp extends StatelessWidget {
           MehtlanScreen.route: (context) => const MehtlanScreen(),
           TafkhemScreen.route: (context) => const TafkhemScreen(),
           MixScreen.route: (context) => const MixScreen(),
+          OptionsScreen.route: (context) => const OptionsScreen(),
+          // TeacherSubscribe.route: (context) => const TeacherSubscribe(),
         },
       ),
       iosBuilder: (context) => CupertinoApp(
         debugShowCheckedModeBanner: false,
         title: 'Quiz App',
-        home: const OptionsScreen(),
+        home: const AuthWrapper(),
         routes: {
+          // WaitingScreen.route: (context) => const WaitingScreen(),
           MododScreen.route: (context) => const MododScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
           PhonicsScreen.route: (context) => const PhonicsScreen(),
@@ -180,6 +204,8 @@ class MyApp extends StatelessWidget {
           TafkhemScreen.route: (context) => const TafkhemScreen(),
           MixScreen.route: (context) => const MixScreen(),
           MakharejScreen.route: (context) => const MakharejScreen(),
+          OptionsScreen.route: (context) => const OptionsScreen(),
+          // TeacherSubscribe.route: (context) => const TeacherSubscribe(),
         },
         theme: const CupertinoThemeData(
           textTheme: CupertinoTextThemeData(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/quiz_screen.dart';
-import '../provider/modod_provider.dart';
+import '../quiz_screen.dart';
+import '../../provider/modod_provider.dart';
 
 class MododScreen extends StatelessWidget {
   static String route = '/modod-screen';

@@ -24,7 +24,7 @@ class HearingWidget extends StatelessWidget {
           5.0,
           IconButton(
             tooltip: (index + 1).toString(),
-            padding: AppSettings.edgeInsetsAll(15.0),
+            padding: AppSettings.edgeInsetsAll(10.0),
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.blue.shade200),
               shape: MaterialStateProperty.all(
