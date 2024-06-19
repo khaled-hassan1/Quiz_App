@@ -40,7 +40,7 @@ class FailedScreen extends StatelessWidget {
           children: [
             const TextButton(
               style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(
                       Color.fromARGB(255, 183, 178, 178))),
               onPressed: null,
               child: Text('جرب مرة أخري'),
@@ -49,10 +49,10 @@ class FailedScreen extends StatelessWidget {
             TextButton(
               onPressed: provider.restartQuiz,
               style: ButtonStyle(
-                  textStyle: const MaterialStatePropertyAll(
+                  textStyle: const WidgetStatePropertyAll(
                     TextStyle(fontFamily: 'Marhey', fontSize: 20),
                   ),
-                  padding: MaterialStateProperty.all(const EdgeInsets.all(13))),
+                  padding: WidgetStateProperty.all(const EdgeInsets.all(13))),
               child: const Text(
                 'إعادة الأسئلة',
               ),

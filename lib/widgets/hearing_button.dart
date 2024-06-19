@@ -8,10 +8,10 @@ class HearingWidget extends StatelessWidget {
   final List<String> soundPaths;
 
   const HearingWidget({
-    Key? key,
+    super.key,
     required this.provider,
     required this.soundPaths,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,13 @@ class HearingWidget extends StatelessWidget {
             tooltip: (index + 1).toString(),
             padding: AppSettings.edgeInsetsAll(10.0),
             style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(Colors.blue.shade200),
-              shape: MaterialStateProperty.all(
+              overlayColor: WidgetStateProperty.all(Colors.blue.shade200),
+              shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: AppSettings.borderRadiusCircle(15),
                 ),
               ),
-              backgroundColor: MaterialStateProperty.all(AppSettings.white),
+              backgroundColor: WidgetStateProperty.all(AppSettings.white),
             ),
             onPressed: () {
               AppSettings.makeSound(soundPaths[index]);

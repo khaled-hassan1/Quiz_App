@@ -25,10 +25,10 @@ class AppSettings {
   static const FontWeight bold = FontWeight.bold;
   static const FontWeight w900 = FontWeight.w900;
   static final buttonStyle = ButtonStyle(
-    padding: MaterialStatePropertyAll(
+    padding: WidgetStatePropertyAll(
       edgeInsetsAll(6),
     ),
-    textStyle: const MaterialStatePropertyAll(
+    textStyle: const WidgetStatePropertyAll(
       TextStyle(
           fontSize: 21, fontFamily: 'Marhey', fontWeight: FontWeight.w100),
     ),
@@ -46,16 +46,16 @@ class AppSettings {
   static const Color red = Colors.red;
   static const Color white = Colors.white;
   static final buttonStyleCertificate =
-      ButtonStyle(padding: MaterialStatePropertyAll(edgeInsetsAll(13)));
+      ButtonStyle(padding: WidgetStatePropertyAll(edgeInsetsAll(13)));
 
   static ButtonStyle buttonStyleCertificateScreen = ButtonStyle(
-      textStyle: const MaterialStatePropertyAll(
+      textStyle: const WidgetStatePropertyAll(
         TextStyle(
           fontFamily: 'Marhey',
           fontSize: 20,
         ),
       ),
-      padding: MaterialStateProperty.all(edgeInsetsAll(13)));
+      padding: WidgetStateProperty.all(edgeInsetsAll(13)));
   static const Color main = Color.fromARGB(255, 1, 11, 29);
   static const Color blue = Colors.blueAccent;
 

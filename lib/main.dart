@@ -130,9 +130,9 @@ class MyApp extends StatelessWidget {
           ),
           textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
-              foregroundColor: MaterialStatePropertyAll(Colors.blue.shade900),
-              backgroundColor: MaterialStatePropertyAll(Colors.grey.shade50),
-              textStyle: const MaterialStatePropertyAll(
+              foregroundColor: WidgetStatePropertyAll(Colors.blue.shade900),
+              backgroundColor: WidgetStatePropertyAll(Colors.grey.shade50),
+              textStyle: const WidgetStatePropertyAll(
                   TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
             ),
           ),
