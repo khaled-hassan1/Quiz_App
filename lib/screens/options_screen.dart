@@ -63,7 +63,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
     // final isTeacherPressed =
     //     Provider.of<CheckSettingsProvider>(context, listen: false).isTeacher;
     if (!AppSettings.isCertificateSoundCalled) {
-      AppSettings.isCertificateSoundCalled = true;
+      // AppSettings.isCertificateSoundCalled = true;
       AppSettings.futureDelay(
         () => Ads().loadAd(),
         () => Ads().loadAd2(),
