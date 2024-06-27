@@ -4,6 +4,7 @@ import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import './app_settings.dart';
 
+@immutable
 class ImageWidget extends StatelessWidget {
   const ImageWidget({
     super.key,

@@ -6,14 +6,15 @@ import '../widgets/button_with_widget.dart';
 import '../widgets/app_settings.dart';
 
 @immutable
-class UserOption extends StatelessWidget {
+class UserOptionScreen extends StatelessWidget {
   static String route = '/user-option-screen';
 
-  const UserOption({super.key});
+  const UserOptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     Size size2 = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -23,7 +24,7 @@ class UserOption extends StatelessWidget {
           title: SizedBox(
             height: 70,
             child: Marquee(
-              text: '🤲طبتم وطاب سعيكم وتبوأتم من الجنة منزلا',
+              text: '🤲  طبتم وطاب سعيكم وتبوأتم من الجنة منزلا',
               style: Theme.of(context).textTheme.titleMedium,
               scrollAxis: Axis.horizontal,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,6 +53,13 @@ class UserOption extends StatelessWidget {
                   height: size2.height / 2,
                   width: size2.width,
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45.withOpacity(0.5),
+                        blurRadius: 20,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
                     color: Colors.deepPurple.shade100,
                     borderRadius: AppSettings.borderRadiusCircle(20),
                   ),

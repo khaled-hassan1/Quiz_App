@@ -11,6 +11,7 @@ import '../widgets/app_settings.dart';
 import '../provider/names_provider.dart';
 import '../widgets/banner_ads.dart';
 
+@immutable
 class ResultScreen extends StatelessWidget {
   static String route = '/certificate-screen';
 

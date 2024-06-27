@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/user_choice.dart';
 import '../screens/auth_screen.dart';
 import '../provider/check_teacher_provider.dart';
 import './firebase_options.dart';
@@ -106,6 +107,7 @@ Future<void> main() async {
   });
 }
 
+@immutable
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -150,11 +152,11 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const AuthWrapper(),
-        //  const UserOption(),
+        home:
+            // const AuthWrapper(),
+            const UserOptionScreen(),
         // const OptionsScreen(),
         routes: {
-          // WaitingScreen.route: (context) => const WaitingScreen(),
           MododScreen.route: (context) => const MododScreen(),
           PhonicsScreen.route: (context) => const PhonicsScreen(),
           SifatScreen.route: (context) => const SifatScreen(),
@@ -176,6 +178,7 @@ class MyApp extends StatelessWidget {
           TafkhemScreen.route: (context) => const TafkhemScreen(),
           MixScreen.route: (context) => const MixScreen(),
           OptionsScreen.route: (context) => const OptionsScreen(),
+          UserOptionScreen.route: (context) => const UserOptionScreen(),
           // TeacherSubscribe.route: (context) => const TeacherSubscribe(),
         },
       ),
@@ -184,7 +187,7 @@ class MyApp extends StatelessWidget {
         title: 'Quiz App',
         home: const AuthWrapper(),
         routes: {
-          // WaitingScreen.route: (context) => const WaitingScreen(),
+          UserOptionScreen.route: (context) => const UserOptionScreen(),
           MododScreen.route: (context) => const MododScreen(),
           NoonScreen.route: (context) => const NoonScreen(),
           PhonicsScreen.route: (context) => const PhonicsScreen(),

@@ -35,7 +35,7 @@ class QuizProvider with ChangeNotifier {
 
   int get restartQuizCount => _restartQuizCount;
 
-  List get questions => _questions;
+  List get questions => [..._questions];
 
   bool get isQuizFinished => _currentQuestionIndex == _questions.length;
 
@@ -46,6 +46,7 @@ class QuizProvider with ChangeNotifier {
   int get allScoreInCorrect => _allScoreInCorrect;
 
   bool get isSuccess => _scoreCorrect >= 7;
+  
   void answerQuestion(int selectedAnswerIndex) {
     debugPrint(
         '...............allScoreCorrect.............. $_allScoreCorrect ');

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../provider/base_provider.dart';
 import './app_settings.dart';
 
+@immutable
 class MoveContainerOfNum extends StatelessWidget {
   const MoveContainerOfNum({
     super.key,

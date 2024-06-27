@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_settings.dart';
 
+@immutable
 class GradientContainer extends StatelessWidget {
   final Widget child;
   const GradientContainer({

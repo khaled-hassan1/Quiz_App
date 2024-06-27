@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:quiz_app/ads/ad_manager.dart';
 
+@immutable
 class BannerAds extends StatefulWidget {
   const BannerAds({super.key});
 

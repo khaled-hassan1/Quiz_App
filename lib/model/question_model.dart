@@ -8,16 +8,17 @@
 //       required this.options,
 //       required this.correctAnswerIndex});
 // }
+import 'package:flutter/material.dart';
 
+@immutable
 abstract class Question {
   final String question;
   final List<String> options;
   final int correctAnswerIndex;
 
-  Question({
+  const Question({
     required this.question,
     required this.options,
     required this.correctAnswerIndex,
   });
 }
-

@@ -10,7 +10,7 @@ class NamesProvider with ChangeNotifier {
   String? _teacherName;
 
   String? get teacherName => _teacherName;
-  final String _defaultTeacher = 'أ.م/خالد حسن غالي';
+  final String _defaultTeacher = '';
 
   String _textMakharej = '🎉    مخارج الحروف';
   String _textSifat = '🎉    صفات الحروف';

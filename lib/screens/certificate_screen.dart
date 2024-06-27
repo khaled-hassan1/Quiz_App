@@ -16,6 +16,7 @@ import '../widgets/certificate.dart';
 import '../widgets/container_header.dart';
 import '../widgets/gradient_container.dart';
 
+@immutable
 class CertificateScreen extends StatelessWidget {
   static String route = '/certificate-screen';
 

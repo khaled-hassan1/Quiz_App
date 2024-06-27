@@ -10,6 +10,7 @@ import '../widgets/app_settings.dart';
 import '../provider/base_provider.dart';
 import '../provider/names_provider.dart';
 
+@immutable
 class Certificate extends StatelessWidget {
   final QuizProvider provider;
   final String namePage;
@@ -60,8 +61,13 @@ class Certificate extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
-                                .copyWith(
-                                    color: Colors.black, fontFamily: 'Changa')),
+                                .copyWith(shadows: [
+                              const Shadow(
+                                blurRadius: 10,
+                                color: AppSettings.green,
+                                // offset: Offset(0, 0)
+                              ),
+                            ], color: Colors.black, fontFamily: 'Changa')),
                         TextSpan(
                           text: '\nإلى الطالب/ة: ${nameProvider.userName}',
                           style: mediumStyle.copyWith(
@@ -193,8 +199,9 @@ Widget buildSignatureImage(NamesProvider provider, bool isTeacherPressed) {
   } else if (isMe) {
     imageProvider = provider.assetImageMe;
   } else {
-    isTeacherPressed = true;
-    imageProvider = FileImage(provider.a);
+    // isTeacherPressed = true;
+    // imageProvider = FileImage(provider.a);
+    imageProvider = const AssetImage('assets/image/question-mark.jpeg');
   }
 
   return Positioned(

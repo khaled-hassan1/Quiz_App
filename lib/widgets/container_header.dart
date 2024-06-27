@@ -4,6 +4,7 @@ import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import '../widgets/app_settings.dart';
 
+@immutable
 class ContainerHeader extends StatelessWidget {
   final String namePage;
   final QuizProvider provider;

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../widgets/app_settings.dart';
 import '../provider/base_provider.dart';
 
+@immutable
 class QuestionText extends StatelessWidget {
   final QuizProvider provider;
 

@@ -5,6 +5,7 @@ import '../model/questions_list.dart';
 import '../provider/base_provider.dart';
 import '../widgets/app_settings.dart';
 
+@immutable
 class RowCorrectAndInCorrect extends StatelessWidget {
   const RowCorrectAndInCorrect({
     super.key,

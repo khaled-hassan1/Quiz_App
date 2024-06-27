@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../provider/base_provider.dart';
 import './move_container_num.dart';
 
+@immutable
 class RowNumOfQuestion extends StatelessWidget {
   const RowNumOfQuestion({
     super.key,

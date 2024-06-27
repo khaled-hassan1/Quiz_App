@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_settings.dart';
 
+@immutable
 class PlatformWidget extends StatelessWidget {
   final WidgetBuilder androidBuilder;
   final WidgetBuilder iosBuilder;

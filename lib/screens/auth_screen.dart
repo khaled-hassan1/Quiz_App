@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../screens/options_screen.dart';
 import '../screens/user_choice.dart';
 
+@immutable
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
 
@@ -18,7 +19,7 @@ class AuthWrapper extends StatelessWidget {
         if (snapshot.hasData) {
           return const OptionsScreen();
         }
-        return const UserOption();
+        return const UserOptionScreen();
       },
     );
   }

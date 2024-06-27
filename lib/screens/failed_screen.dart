@@ -5,6 +5,7 @@ import '../ads/ads_initial.dart';
 import '../widgets/app_settings.dart';
 import '../widgets/banner_ads.dart';
 
+@immutable
 class FailedScreen extends StatelessWidget {
   static String route = '/failed-screen';
   final dynamic provider;

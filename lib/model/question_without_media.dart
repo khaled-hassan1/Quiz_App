@@ -1,5 +1,7 @@
-import 'question_model.dart';
+import 'package:flutter/material.dart';
+import './question_model.dart';
 
+@immutable
 class QuestionWithoutMedia implements Question {
   @override
   final int correctAnswerIndex;
@@ -10,7 +12,7 @@ class QuestionWithoutMedia implements Question {
   @override
   final String question;
 
-  QuestionWithoutMedia(
+  const QuestionWithoutMedia(
       {required this.correctAnswerIndex,
       required this.options,
       required this.question});

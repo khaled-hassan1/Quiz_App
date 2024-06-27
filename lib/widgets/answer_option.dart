@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/app_settings.dart';
 
+@immutable
 class AnswerOption extends StatelessWidget {
   final String option;
   final VoidCallback onTap;

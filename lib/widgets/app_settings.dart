@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class AppSettings {
   static const double hundred = 100.0;
   static const MainAxisAlignment spaceAround = MainAxisAlignment.spaceAround;

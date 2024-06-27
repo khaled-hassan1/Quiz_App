@@ -3,9 +3,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'ad_manager.dart';
 
+@immutable
 class Ads {
-  InterstitialAd? _interstitialAd;
-  InterstitialAd? _interstitialAd2;
+  late final InterstitialAd? _interstitialAd;
+  late final InterstitialAd? _interstitialAd2;
 
   void loadAd() {
     InterstitialAd.load(

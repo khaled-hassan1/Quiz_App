@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../provider/phonics_provider.dart';
 import '../screens/quiz_screen.dart';
 
+@immutable
 class PhonicsScreen extends StatelessWidget {
   static String route = '/phonics-screen';
 

@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'question_model.dart';
 
+@immutable
 class QuestionWithImage implements Question {
   final String imagePath;
 
@@ -12,7 +15,7 @@ class QuestionWithImage implements Question {
   @override
   final String question;
 
-  QuestionWithImage({
+  const QuestionWithImage({
     required this.correctAnswerIndex,
     required this.options,
     required this.question,

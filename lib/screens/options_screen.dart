@@ -3,7 +3,11 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// import '../screens/certificate_screen.dart';
+
 import '../screens/phonics_screen.dart';
+import '../widgets/alert_name_widget.dart';
+import '../widgets/alert_teacher_widget.dart';
 import './alph_screens/methlan_screen.dart';
 import './alph_screens/mix_screen.dart';
 import './alph_screens/noon_screen.dart';
@@ -21,6 +25,7 @@ import './alph_screens/tafkhem_screen.dart';
 import './alph_screens/tajwed_screen.dart';
 import '../widgets/app_settings.dart';
 
+@immutable
 class OptionsScreen extends StatefulWidget {
   static const String route = '/options-screen';
 
@@ -63,20 +68,15 @@ class _OptionsScreenState extends State<OptionsScreen> {
     // final isTeacherPressed =
     //     Provider.of<CheckSettingsProvider>(context, listen: false).isTeacher;
     if (!AppSettings.isCertificateSoundCalled) {
-      AppSettings.isCertificateSoundCalled = true;
+      // AppSettings.isCertificateSoundCalled = true;
       AppSettings.futureDelay(
         () => Ads().loadAd(),
         () => Ads().loadAd2(),
-        () {
-          // if (!isTeacherPressed) {
-          //   showTeacherDialog(context);
-          // }
-          showTeacherDialog(context);
-        },
+        () => showTeacherDialog(context),
+        // () => null,
+        // () => null,
+        // () => null,
         () => showNameDialog(context),
-        // () => null,
-        // () => null,
-        // () => null,
       );
     }
     final nameProvider = Provider.of<NamesProvider>(context, listen: false);
@@ -108,19 +108,19 @@ class _OptionsScreenState extends State<OptionsScreen> {
                     alignment: Alignment.topCenter,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Consumer<NamesProvider>(
-                      builder: (context, value, _) => Text(
-                        value.teacherName == null
-                            ? value.defaultTeacher
-                            : 'أ/${value.teacherName}',
-                        style: !AppSettings.platformIos
-                            ? Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(color: Colors.tealAccent)
-                            : CupertinoTheme.of(context)
-                                .textTheme
-                                .navLargeTitleTextStyle,
-                      ),
+                      builder: (context, value, _) => value.teacherName == null
+                          ? const SizedBox()
+                          : Text(
+                              'أ/${value.teacherName}',
+                              style: !AppSettings.platformIos
+                                  ? Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(color: Colors.tealAccent)
+                                  : CupertinoTheme.of(context)
+                                      .textTheme
+                                      .navLargeTitleTextStyle,
+                            ),
                     ),
                   ),
                   if (!AppSettings.platformIos) AppSettings.sizedBox(30),
@@ -136,6 +136,10 @@ class _OptionsScreenState extends State<OptionsScreen> {
                             Text(value.textMabade),
                       )),
                   AppSettings.sizesBoxOptionsScreen,
+                  // TextButton(
+                  //     onPressed: () =>
+                  //         Navigator.pushNamed(context, CertificateScreen.route),
+                  //     child: const Text('Certificate Screen')),
                   ButtonWithWidget(
                     fun: () {
                       AppSettings.click();
@@ -301,81 +305,15 @@ class _OptionsScreenState extends State<OptionsScreen> {
     TextDirection rtl = TextDirection.rtl;
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     if (!AppSettings.platformIos) {
-      return showDialog(
+      return await showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return AlertDialog(
-            title: Text(
-              ' اكتب اسمك من فضلك لتشارك النتيجة إن أحببت:',
-              textDirection: rtl,
-            ),
-            content: SizedBox(
-              height: 130,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      'ملاحظة: لتحصل على الشهاده لابد أن تكون الأجوبة الصحيحة 7 فما فوق أو 50 فما فوق بالنسبة للاختبار على كل الأبواب بالتوفيق.',
-                      textDirection: rtl,
-                      style: TextStyle(
-                        color: Colors.grey.shade900,
-                        fontFamily: '',
-                      ),
-                    ),
-                    AppSettings.sizedBox(20),
-                    Form(
-                      key: formKey,
-                      child: TextFormField(
-                        textAlignVertical: TextAlignVertical.center,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'يرجى إدخال اسمك';
-                          }
-                          return null;
-                        },
-                        textDirection: rtl,
-                        controller: controller,
-                        style: const TextStyle(fontSize: 20),
-                        decoration: InputDecoration(
-                          hintText: 'اسمك...',
-                          hintTextDirection: rtl,
-                        ),
-                      ),
-                    ),
-                    AppSettings.sizedBox(20),
-                  ],
-                ),
-              ),
-            ),
-            actions: [
-              AppSettings.sizedBox(20),
-              // TextButton(
-              //   onPressed: () {
-              //     AppSettings.click();
-              //     Navigator.pop(context);
-              //   },
-              //   child: Text(
-              //     'إلغاء',
-              //     style: TextStyle(color: Colors.grey.shade900),
-              //   ),
-              // ),
-              TextButton(
-                onPressed: () {
-                  if (!formKey.currentState!.validate()) {
-                    return;
-                  }
-                  String name = controller.text.trim();
-                  provider.getName(name);
-                  AppSettings.click();
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  'تأكيد',
-                ),
-              ),
-            ],
-          );
+          return AlertNameWidget(
+              rtl: rtl,
+              formKey: formKey,
+              controller: controller,
+              provider: provider);
         },
       );
     } else {
@@ -606,72 +544,11 @@ class _OptionsScreenState extends State<OptionsScreen> {
     // final newTeacher = Provider.of<NewTeacherItem>(context, listen: false);
     TextDirection rtl = TextDirection.rtl;
     if (!AppSettings.platformIos) {
-      return showDialog(
+      return await showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return AlertDialog(
-            title: Text(
-              'اختر المعلم:  ',
-              textDirection: rtl,
-            ),
-            content:
-                //  data == null
-                //     ? const Center(
-                //         child: Text('انتظر...'),
-                //       )
-                //     :
-                SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: AppSettings.mainAxisAlignmentCenter,
-                children: [
-                  AppSettings.sizedBox(20),
-                  AppSettings.putPadding(
-                      2.0,
-                      ButtonWithWidget(
-                        fun: () {
-                          String teacherName = 'خالد حسن غالي';
-                          provider.getNameTeacher(teacherName);
-                          AppSettings.click();
-                          Navigator.pop(context);
-                        },
-                        child: const Text('خالد حسن غالي'),
-                      )),
-                  AppSettings.sizedBox(20),
-                  AppSettings.putPadding(
-                    2.0,
-                    ButtonWithWidget(
-                      fun: () {
-                        String teacherName = 'محمد أبو سمرة';
-                        provider.getNameTeacher(teacherName);
-                        AppSettings.click();
-                        Navigator.pop(context);
-                      },
-                      child: const Text('محمد أبو سمرة'),
-                    ),
-                  ),
-                  AppSettings.sizedBox(20),
-                  // ...newTeacher.items.map(
-                  //   (item) => AppSettings.putPadding(
-                  //     2.0,
-                  //     ButtonWithWidget(
-                  //       fun: () {
-                  //         // provider.a = File(item.imagePath.path);
-                  //         // item.name = data['name'];
-                  //         debugPrint(
-                  //             '============================================${item.name}');
-                  //         provider.getNameTeacher(item.name!);
-                  //         AppSettings.click();
-                  //         Navigator.pop(context);
-                  //       },
-                  //       child: Text(item.name!),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-            ),
-          );
+          return AlertTeacherWidget(rtl: rtl, provider: provider);
         },
       );
     }

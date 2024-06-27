@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+@immutable
 class AdManager {
   static bool isTest = false;
   static String bannerHome = isTest

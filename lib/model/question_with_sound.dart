@@ -1,8 +1,10 @@
 import 'question_model.dart';
+import 'package:flutter/material.dart';
 
+@immutable
 class QuestionWithSound implements Question {
   final List<String> soundPath;
-   
+
   @override
   final int correctAnswerIndex;
 
@@ -12,7 +14,7 @@ class QuestionWithSound implements Question {
   @override
   final String question;
 
-  QuestionWithSound({
+  const QuestionWithSound({
     required this.correctAnswerIndex,
     required this.options,
     required this.question,
